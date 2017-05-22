@@ -43,23 +43,23 @@ $.validator.setDefaults({
 		},
 		messages : {
 			username : {
-				required : e + "请输入您的用户名！",
-				minlength : e + "用户名必须2个字符以上！",
-				maxlength : e + "用户名必须20个字符以下！"
+				required : e + "Please enter username!",
+				minlength : e + "Username must be more than 2 characters!",//用户名必须2个字符以上！
+				maxlength : e + "Username must be 20 characters below!" //用户名必须20个字符以下！
 			},
 			password : {
-				required : e + "请输入您的密码！",
-				minlength : e + "密码必须6个字符以上！",
-				maxlength : e + "密码必须20个字符以下！"
+				required : e + "Please enter password!",
+				minlength : e + "Password must be more than 6 characters!", //密码必须6个字符以上！
+				maxlength : e + "password must be 20 characters below!" //密码必须20个字符以下！
 			},
 			code : {
-				required : e + "请输入对应的验证码！",
-				minlength : e + "请输入对应的验证码！"
+				required : e + "Please enter verification code!",
+				minlength : e + "Please enter the corresponding verification code!" // 请输入对应的验证码
 			}
 		},
 		submitHandler: function (form){
             
-            $("#login").html('<i class="fa fa-spinner fa-spin"></i>登录中...');
+            $("#login").html('<i class="fa fa-spinner fa-spin"></i>Log in...');
             $("#login").attr("disabled",true);
             $.ajax({
     			type:"post",
@@ -68,7 +68,7 @@ $.validator.setDefaults({
     			dataType:"json",
     			success:function(data){
 //    				swal(JSON.stringify(data));
-    				$("#login").html('登录');
+    				$("#login").html('Login');
     	            $("#login").attr("disabled",false);
     				if(data.success){
     					window.location="index";
@@ -76,23 +76,23 @@ $.validator.setDefaults({
     				}else{
     					switch (data.message) {
 						case "code_error":
-							swal("验证码有误！");
+							swal("code error！");
 							$(".form-code-img").trigger("click");
 							$("#code").val("");
 							$("#code").focus();
 							break;
 						case "login_error":
-							swal("用户名或密码错误！");
+							swal("Incorrect username or password!"); // 用户名错误
 							$(".form-code-img").trigger("click");
 							$("#code").val("");
 							break;
 						case "username_error":
-							swal("没有该系统用户！");
+							swal("Incorrect username or password!"); // 没有该系统用户！
 							$(".form-code-img").trigger("click");
 							$("#code").val("");
 							break;
 						case "password_error":
-							swal("用户名或密码有误！");
+							swal("Incorrect username or password!"); // 密码错误
 							$(".form-code-img").trigger("click");
 							$("#code").val("");
 							$("#password").focus();
