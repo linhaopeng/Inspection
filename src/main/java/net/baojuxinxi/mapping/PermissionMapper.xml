@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.baojuxinxi.dao.PermissionMapper" >
+  <resultMap id="BaseResultMap" type="net.baojuxinxi.pojo.Permission" >
+    <id column="permission_id" property="permissionId" jdbcType="INTEGER" />
+    <result column="permission_name" property="permissionName" jdbcType="VARCHAR" />
+    <result column="permission_type" property="permissionType" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="permission_key" property="permissionKey" jdbcType="VARCHAR" />
+    <result column="permission_level" property="permissionLevel" jdbcType="INTEGER" />
+    <result column="link" property="link" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="latest_update_time" property="latestUpdateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    permission_id, permission_name, permission_type, parent_id, permission_key, permission_level, 
+    link, description, created_time, latest_update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from permission
+    where permission_id = #{permissionId,jdbcType=INTEGER}
+  </select>
+  <select id="selectRolePermission" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    SELECT p.* FROM `permission` p 
+	JOIN role_permissions rp ON p.permission_id = rp.permission_id 
+	JOIN user_roles ur ON rp.role_id = ur.role_id 
+	WHERE ur.user_id = #{userId } 
+	ORDER BY p.created_time 
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from permission
+    where permission_id = #{permissionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.baojuxinxi.pojo.Permission" >
+    insert into permission (permission_id, permission_name, permission_type, 
+      parent_id, permission_key, permission_level, 
+      link, description, created_time, 
+      latest_update_time)
+    values (#{permissionId,jdbcType=INTEGER}, #{permissionName,jdbcType=VARCHAR}, #{permissionType,jdbcType=INTEGER}, 
+      #{parentId,jdbcType=INTEGER}, #{permissionKey,jdbcType=VARCHAR}, #{permissionLevel,jdbcType=INTEGER}, 
+      #{link,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{latestUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="net.baojuxinxi.pojo.Permission" >
+    insert into permission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="permissionId != null" >
+        permission_id,
+      </if>
+      <if test="permissionName != null" >
+        permission_name,
+      </if>
+      <if test="permissionType != null" >
+        permission_type,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="permissionKey != null" >
+        permission_key,
+      </if>
+      <if test="permissionLevel != null" >
+        permission_level,
+      </if>
+      <if test="link != null" >
+        link,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="latestUpdateTime != null" >
+        latest_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="permissionId != null" >
+        #{permissionId,jdbcType=INTEGER},
+      </if>
+      <if test="permissionName != null" >
+        #{permissionName,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionType != null" >
+        #{permissionType,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="permissionKey != null" >
+        #{permissionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionLevel != null" >
+        #{permissionLevel,jdbcType=INTEGER},
+      </if>
+      <if test="link != null" >
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="latestUpdateTime != null" >
+        #{latestUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.baojuxinxi.pojo.Permission" >
+    update permission
+    <set >
+      <if test="permissionName != null" >
+        permission_name = #{permissionName,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionType != null" >
+        permission_type = #{permissionType,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="permissionKey != null" >
+        permission_key = #{permissionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionLevel != null" >
+        permission_level = #{permissionLevel,jdbcType=INTEGER},
+      </if>
+      <if test="link != null" >
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="latestUpdateTime != null" >
+        latest_update_time = #{latestUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where permission_id = #{permissionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.baojuxinxi.pojo.Permission" >
+    update permission
+    set permission_name = #{permissionName,jdbcType=VARCHAR},
+      permission_type = #{permissionType,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      permission_key = #{permissionKey,jdbcType=VARCHAR},
+      permission_level = #{permissionLevel,jdbcType=INTEGER},
+      link = #{link,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      latest_update_time = #{latestUpdateTime,jdbcType=TIMESTAMP}
+    where permission_id = #{permissionId,jdbcType=INTEGER}
+  </update>
+</mapper>

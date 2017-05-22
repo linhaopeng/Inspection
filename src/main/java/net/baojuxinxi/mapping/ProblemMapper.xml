@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.baojuxinxi.dao.ProblemMapper">
+  <resultMap id="BaseResultMap" type="net.baojuxinxi.pojo.Problem">
+    <id column="problem_id" jdbcType="VARCHAR" property="problemId" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="describes" jdbcType="VARCHAR" property="describes" />
+    <result column="involved_dept" jdbcType="VARCHAR" property="involvedDept" />
+    <result column="solution" jdbcType="VARCHAR" property="solution" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="isdeleted" jdbcType="TINYINT" property="isdeleted" />
+    <result column="project_id" jdbcType="VARCHAR" property="projectId" />
+    <result column="head_img" jdbcType="VARCHAR" property="headImg" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+  </resultMap>
+
+
+  <resultMap id="prlResultMap" extends="BaseResultMap" type="net.baojuxinxi.pojo.Problem" >
+	  <collection property="problemAnnexList" javaType="net.baojuxinxi.pojo.ProblemAnnex" column="problem_id">
+		<id column="problem_annex_id" jdbcType="VARCHAR" property="problemAnnexId" />
+    <result column="problem_id" jdbcType="VARCHAR" property="problemId" />
+    <result column="problem_annex_name" jdbcType="VARCHAR" property="problemAnnexName" />
+    <result column="problem_annex_type" jdbcType="TINYINT" property="problemAnnexType" />
+    <result column="problem_annex_path" jdbcType="VARCHAR" property="problemAnnexPath" />
+	</collection>
+	<collection property="user" javaType="net.baojuxinxi.pojo.SystemUsers" >
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="usercname" property="usercname" jdbcType="VARCHAR" />
+		<result column="head_img" property="headImg" jdbcType="VARCHAR" />
+		</collection>
+  </resultMap>
+
+  	<resultMap id="blogResultMap" extends="BaseResultMap"  type="net.baojuxinxi.pojo.Problem">
+       <collection property="problemAnnexList" ofType="net.baojuxinxi.pojo.ProblemAnnex" column="problem_id" select="net.baojuxinxi.dao.ProblemAnnexMapper.selectBy_problemKey" />
+		<collection property="user" javaType="net.baojuxinxi.pojo.SystemUsers" >
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="usercname" property="usercname" jdbcType="VARCHAR" />
+		<result column="head_img" property="headImg" jdbcType="VARCHAR" />
+		</collection>
+    </resultMap>
+    
+    <resultMap id="userResultMap" extends="BaseResultMap"  type="net.baojuxinxi.pojo.Problem">
+		<collection property="user" javaType="net.baojuxinxi.pojo.SystemUsers" >
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="usercname" property="usercname" jdbcType="VARCHAR" />
+		<result column="head_img" property="headImg" jdbcType="VARCHAR" />
+		</collection>
+    </resultMap>
+   
+    <resultMap id="commResultMap" extends="BaseResultMap"  type="net.baojuxinxi.pojo.Problem">
+       <collection property="CommentList" ofType="net.baojuxinxi.pojo.Comment" column="problem_id" select="net.baojuxinxi.dao.CommentMapper.selectBy_problemKey" />
+    </resultMap>
+  <sql id="Base_Column_List">
+    problem_id, task_id, title, describes, involved_dept, solution, state, creator, create_time, 
+    isdeleted, project_id, head_img, user_id
+  </sql>
+   <sql id="Base_List">
+    p.problem_id, p.task_id, p.title, p.describes, p.involved_dept, p.solution, p.state, p.creator, p.create_time, 
+    p.isdeleted, p.project_id,  p.user_id
+  </sql>
+ 
+  <sql id="Base_comm_List">
+    	p.problem_id, p.task_id, p.title, 
+      p.describes, p.involved_dept, p.solution, 
+      p.state, p.creator, p.create_time, p.head_img,
+      p.isdeleted, p.project_id
+      ,c.comment_id, c.problem_id, c.content, c.creator, c.create_time, c.parent_comment_id, c.head_img
+  </sql>
+    <sql id="Base_ann_List">
+    	 p.problem_id, p.task_id, p.title, 
+      p.describes, p.involved_dept, p.solution, 
+      p.state, p.creator, p.create_time, 
+      p.isdeleted, p.project_id,p.head_img,
+      a.problem_annex_id,a.problem_annex_name, 
+      a.problem_annex_type, a.problem_annex_path
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from problem
+    where problem_id = #{problemId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from problem
+    where problem_id = #{problemId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.baojuxinxi.pojo.Problem">
+    insert into problem (problem_id, task_id, title, 
+      describes, involved_dept, solution, 
+      state, creator, create_time, 
+      isdeleted, project_id, head_img, 
+      user_id)
+    values (#{problemId,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{describes,jdbcType=VARCHAR}, #{involvedDept,jdbcType=VARCHAR}, #{solution,jdbcType=VARCHAR}, 
+      #{state,jdbcType=TINYINT}, #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{isdeleted,jdbcType=TINYINT}, #{projectId,jdbcType=VARCHAR}, #{headImg,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.baojuxinxi.pojo.Problem">
+    insert into problem
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="problemId != null">
+        problem_id,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="describes != null">
+        describes,
+      </if>
+      <if test="involvedDept != null">
+        involved_dept,
+      </if>
+      <if test="solution != null">
+        solution,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="isdeleted != null">
+        isdeleted,
+      </if>
+      <if test="projectId != null">
+        project_id,
+      </if>
+      <if test="headImg != null">
+        head_img,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="problemId != null">
+        #{problemId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="describes != null">
+        #{describes,jdbcType=VARCHAR},
+      </if>
+      <if test="involvedDept != null">
+        #{involvedDept,jdbcType=VARCHAR},
+      </if>
+      <if test="solution != null">
+        #{solution,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null">
+        #{isdeleted,jdbcType=TINYINT},
+      </if>
+      <if test="projectId != null">
+        #{projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null">
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.baojuxinxi.pojo.Problem">
+    update problem
+    <set>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="describes != null">
+        describes = #{describes,jdbcType=VARCHAR},
+      </if>
+      <if test="involvedDept != null">
+        involved_dept = #{involvedDept,jdbcType=VARCHAR},
+      </if>
+      <if test="solution != null">
+        solution = #{solution,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null">
+        isdeleted = #{isdeleted,jdbcType=TINYINT},
+      </if>
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null">
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where problem_id = #{problemId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.baojuxinxi.pojo.Problem">
+    update problem
+    set task_id = #{taskId,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      describes = #{describes,jdbcType=VARCHAR},
+      involved_dept = #{involvedDept,jdbcType=VARCHAR},
+      solution = #{solution,jdbcType=VARCHAR},
+      state = #{state,jdbcType=TINYINT},
+      creator = #{creator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      isdeleted = #{isdeleted,jdbcType=TINYINT},
+      project_id = #{projectId,jdbcType=VARCHAR},
+      head_img = #{headImg,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR}
+    where problem_id = #{problemId,jdbcType=VARCHAR}
+  </update>
+  <!-- 分页 -->
+  <select id="selectPageList" parameterType="java.util.Map" resultMap="userResultMap">
+    select 
+    <include refid="Base_List" />,u.usercname,u.head_img
+    from problem p LEFT JOIN system_users u ON p.user_id=u.id
+    <where>
+    		<if test="title != null and title != '' ">
+    			p.title LIKE CONCAT(CONCAT('%', #{title }),'%') 
+    		</if>
+    		
+    		<if test="isdeleted != null and isdeleted != '' or isdeleted == 0 ">
+    			AND p.isdeleted = #{isdeleted }
+    		</if>
+    		
+    			AND p.state = #{state }
+    		
+    		AND p.project_id = #{projectId,jdbcType=VARCHAR}
+    	</where>
+    	ORDER BY p.create_time DESC
+  </select>
+
+  <!-- 通过问题ID查询问题     -->
+    <select id="selectPrlblem" parameterType="java.util.Map" resultMap="prlResultMap">
+     
+    SELECT 
+      <include refid="Base_ann_List" />,u.usercname,u.head_img
+    
+    FROM problem p LEFT JOIN problem_annex a ON p.problem_id=a.problem_id  LEFT JOIN system_users u ON p.user_id=u.id
+    <where>
+    		<if test="isdeleted != null and isdeleted != '' or isdeleted == 0 ">
+    			 p.isdeleted = #{isdeleted }
+    		</if>
+    		<if test="state != null and state != '' ">
+    			AND p.state = #{state }
+    		</if>
+    		<if test="projectId != null and projectId != '' ">
+    			AND p.project_id = #{projectId,jdbcType=VARCHAR}
+    		</if>
+    		<if test="problemId != null and problemId != '' ">
+    			AND p.problem_id = #{problemId,jdbcType=VARCHAR}
+    		</if>
+    		<if test="userId != null and userId != '' ">
+    			AND p.user_id = #{userId,jdbcType=VARCHAR}
+    		</if>	
+    	</where>
+    	ORDER BY p.create_time DESC
+  </select>
+
+  <!-- blogResultMap -->
+   <!-- 分页关联附件,关联嵌套 -->
+  <select id="get_par_annList" parameterType="java.util.Map" resultMap="blogResultMap">
+  
+    SELECT 
+      <include refid="Base_List" />,u.usercname,u.head_img
+    from problem p LEFT JOIN system_users u ON p.user_id=u.id
+    <where>
+    		<if test="title != null and title != '' ">
+    			p.title LIKE CONCAT(CONCAT('%', #{title }),'%') 
+    		</if>
+    		<if test="projectId != null and projectId != '' ">
+    			AND p.project_id=#{projectId,jdbcType=VARCHAR}
+    		</if>
+    		<if test="isdeleted != null and isdeleted != '' or isdeleted == 0 ">
+    			AND p.isdeleted = #{isdeleted }
+    		</if>
+    		<if test="state != null and state != '' ">
+    			AND p.state=#{state } 
+    		</if>
+    		<if test="problemId != null and problemId != '' ">
+    			AND p.problem_id = #{problemId,jdbcType=VARCHAR}
+    		</if>
+    		<if test="userId != null and userId != '' ">
+    			AND p.user_id = #{userId,jdbcType=VARCHAR}
+    		</if>
+    	</where>
+    	ORDER BY p.create_time DESC
+  </select>
+<!-- commResultMap -->
+ <!-- 分页关联评论,关联嵌套 -->
+  <select id="get_par_commList" parameterType="java.util.Map" resultMap="commResultMap">
+  
+    SELECT 
+      <include refid="Base_Column_List" />
+    FROM problem   
+    <where>
+    		<if test="title != null and title != '' ">
+    			title LIKE CONCAT(CONCAT('%', #{title }),'%') 
+    		</if>
+    		<if test="projectId != null and projectId != '' ">
+    			AND project_id=#{projectId,jdbcType=VARCHAR}
+    		</if>
+    		<if test="isdeleted != null and isdeleted != '' or isdeleted == 0 ">
+    			AND isdeleted = #{isdeleted }
+    		</if>
+    		<if test="state != null and state != '' ">
+    			AND state=#{state } 
+    		</if>
+    		<if test="problemId != null and problemId != '' ">
+    			AND problem_id = #{problemId,jdbcType=VARCHAR}
+    		</if>
+    		<if test="userId != null and userId != '' ">
+    			AND user_id = #{userId,jdbcType=VARCHAR}
+    		</if>
+    	</where>
+    	ORDER BY create_time DESC
+  </select>
+  <!-- 批量删除项目下的问题updateByKeyDelete -->
+  <update id="updateByKeyDelete" parameterType="java.util.Map">
+    update problem
+    <set>
+      <if test="isdeleted != null">
+        isdeleted = #{isdeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where project_id in
+    <foreach item="idItem" collection="idItems" index="index" open="(" separator="," close=")">
+		#{idItem}
+	</foreach>
+  </update>
+</mapper>

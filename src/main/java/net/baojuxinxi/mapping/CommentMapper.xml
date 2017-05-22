@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.baojuxinxi.dao.CommentMapper">
+  <resultMap id="BaseResultMap" type="net.baojuxinxi.pojo.Comment">
+    <id column="comment_id" jdbcType="VARCHAR" property="commentId" />
+    <result column="problem_id" jdbcType="VARCHAR" property="problemId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="parent_comment_id" jdbcType="VARCHAR" property="parentCommentId" />
+    <result column="head_img" jdbcType="VARCHAR" property="headImg" />
+  </resultMap>
+   <resultMap id="userMap" extends="BaseResultMap" type="net.baojuxinxi.pojo.Comment" >
+	  <collection property="user" javaType="net.baojuxinxi.pojo.SystemUsers" column="creator">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="usercname" property="usercname" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="head_img" property="headImg" jdbcType="VARCHAR" />
+    <result column="ranks" property="ranks" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="com_id" property="comId" jdbcType="INTEGER" />
+     <result column="department_id" property="departmentId" jdbcType="INTEGER" />
+      <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="is_use" property="isUse" jdbcType="INTEGER" />
+    <result column="latest_login_time" property="latestLoginTime" jdbcType="TIMESTAMP" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+     <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="latest_update_time" property="latestUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="latest_update_by" property="latestUpdateBy" jdbcType="VARCHAR" />
+    <result column="priority" property="priority" jdbcType="VARCHAR" />
+	</collection>
+  </resultMap>
+  <sql id="Base_Column_List">
+    comment_id, problem_id, content, creator, create_time, parent_comment_id, head_img
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from comment
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from comment
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.baojuxinxi.pojo.Comment">
+    insert into comment (comment_id, problem_id, content, 
+      creator, create_time, parent_comment_id, 
+      head_img)
+    values (#{commentId,jdbcType=VARCHAR}, #{problemId,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{parentCommentId,jdbcType=VARCHAR}, 
+      #{headImg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.baojuxinxi.pojo.Comment">
+    insert into comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        comment_id,
+      </if>
+      <if test="problemId != null">
+        problem_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="parentCommentId != null">
+        parent_comment_id,
+      </if>
+      <if test="headImg != null">
+        head_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        #{commentId,jdbcType=VARCHAR},
+      </if>
+      <if test="problemId != null">
+        #{problemId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parentCommentId != null">
+        #{parentCommentId,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null">
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.baojuxinxi.pojo.Comment">
+    update comment
+    <set>
+      <if test="problemId != null">
+        problem_id = #{problemId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parentCommentId != null">
+        parent_comment_id = #{parentCommentId,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null">
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.baojuxinxi.pojo.Comment">
+    update comment
+    set problem_id = #{problemId,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      parent_comment_id = #{parentCommentId,jdbcType=VARCHAR},
+      head_img = #{headImg,jdbcType=VARCHAR}
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </update>
+  <!-- 1 -->
+  <select id="selectBy_problemKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from comment
+    where problem_id = #{problemId,jdbcType=VARCHAR}
+  </select>
+  <sql id="Base_c_List">
+    c.comment_id, c.problem_id, c.content, c.creator, c.create_time, c.parent_comment_id, c.head_img
+  </sql>
+   <!-- 模糊查询项目类型 -->
+  	<select id="selectPageList" resultMap="userMap" parameterType="java.util.Map" >
+  		select 
+   	   <include refid="Base_c_List" /> ,u.usercname ,u.head_img
+    	from comment c LEFT JOIN system_users u ON c.creator=u.id
+    	<where>
+    		c.problem_id = #{problemId,jdbcType=VARCHAR}
+    	</where>
+    	ORDER BY c.CREATE_TIME DESC,c.COMMENT_ID
+  	</select>
+  	<!--拿到头像  -->
+</mapper>

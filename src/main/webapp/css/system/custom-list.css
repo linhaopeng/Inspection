@@ -1,0 +1,37 @@
+@CHARSET "UTF-8";
+
+.custom-list ul{
+	/* width: 180px; */
+	height: 150px;
+	overflow-y: auto;
+	border: 1px solid #E0D8D8;
+	padding:0;
+	margin:0;
+}
+
+.custom-list ul li{
+	list-style: none;
+	padding-left: 20px;
+	border-bottom:1px solid #E0D8D8;
+}
+
+.custom-list ul li div{
+	padding:5px 15px 5px 0; 
+}
+
+.pull-right{
+	color: white;
+}
+
+.custom-list ul li:HOVER{
+	background-color: #D6D6D6;
+}
+
+.pull-right:HOVER,.pull-right:ACTIVE{
+	color: black;
+	cursor: pointer;
+}
+
+.bg-li{
+	background-color: #D6D6D6;
+}

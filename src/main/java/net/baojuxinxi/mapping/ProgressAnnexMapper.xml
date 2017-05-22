@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.baojuxinxi.dao.ProgressAnnexMapper">
+  <resultMap id="BaseResultMap" type="net.baojuxinxi.pojo.ProgressAnnex">
+    <id column="progress_annex_id" jdbcType="VARCHAR" property="progressAnnexId" />
+    <result column="progress_id" jdbcType="VARCHAR" property="progressId" />
+    <result column="progress_annex_name" jdbcType="VARCHAR" property="progressAnnexName" />
+    <result column="progress_annex_type" jdbcType="TINYINT" property="progressAnnexType" />
+    <result column="progress_annex_path" jdbcType="VARCHAR" property="progressAnnexPath" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    progress_annex_id, progress_id, progress_annex_name, progress_annex_type, progress_annex_path
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from progress_annex
+    where progress_annex_id = #{progressAnnexId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectBy_progressKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from progress_annex
+    where progress_id = #{progressId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from progress_annex
+    where progress_annex_id = #{progressAnnexId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.baojuxinxi.pojo.ProgressAnnex">
+    insert into progress_annex (progress_annex_id, progress_id, progress_annex_name, 
+      progress_annex_type, progress_annex_path)
+    values (#{progressAnnexId,jdbcType=VARCHAR}, #{progressId,jdbcType=VARCHAR}, #{progressAnnexName,jdbcType=VARCHAR}, 
+      #{progressAnnexType,jdbcType=TINYINT}, #{progressAnnexPath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.baojuxinxi.pojo.ProgressAnnex">
+    insert into progress_annex
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="progressAnnexId != null">
+        progress_annex_id,
+      </if>
+      <if test="progressId != null">
+        progress_id,
+      </if>
+      <if test="progressAnnexName != null">
+        progress_annex_name,
+      </if>
+      <if test="progressAnnexType != null">
+        progress_annex_type,
+      </if>
+      <if test="progressAnnexPath != null">
+        progress_annex_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="progressAnnexId != null">
+        #{progressAnnexId,jdbcType=VARCHAR},
+      </if>
+      <if test="progressId != null">
+        #{progressId,jdbcType=VARCHAR},
+      </if>
+      <if test="progressAnnexName != null">
+        #{progressAnnexName,jdbcType=VARCHAR},
+      </if>
+      <if test="progressAnnexType != null">
+        #{progressAnnexType,jdbcType=TINYINT},
+      </if>
+      <if test="progressAnnexPath != null">
+        #{progressAnnexPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.baojuxinxi.pojo.ProgressAnnex">
+    update progress_annex
+    <set>
+      <if test="progressId != null">
+        progress_id = #{progressId,jdbcType=VARCHAR},
+      </if>
+      <if test="progressAnnexName != null">
+        progress_annex_name = #{progressAnnexName,jdbcType=VARCHAR},
+      </if>
+      <if test="progressAnnexType != null">
+        progress_annex_type = #{progressAnnexType,jdbcType=TINYINT},
+      </if>
+      <if test="progressAnnexPath != null">
+        progress_annex_path = #{progressAnnexPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where progress_annex_id = #{progressAnnexId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.baojuxinxi.pojo.ProgressAnnex">
+    update progress_annex
+    set progress_id = #{progressId,jdbcType=VARCHAR},
+      progress_annex_name = #{progressAnnexName,jdbcType=VARCHAR},
+      progress_annex_type = #{progressAnnexType,jdbcType=TINYINT},
+      progress_annex_path = #{progressAnnexPath,jdbcType=VARCHAR}
+    where progress_annex_id = #{progressAnnexId,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 批量插入 -->
+  <insert id="insertSelectivelist" parameterType="java.util.List">
+    insert into progress_annex (progress_annex_id, progress_id, progress_annex_name, 
+      progress_annex_type, progress_annex_path)
+    values 
+    <foreach collection="list" item="item" index="index" separator=",">  
+    (#{item.progressAnnexId,jdbcType=VARCHAR}, #{item.progressId,jdbcType=VARCHAR}, #{item.progressAnnexName,jdbcType=VARCHAR}, 
+      #{item.progressAnnexType,jdbcType=TINYINT}, #{item.progressAnnexPath,jdbcType=VARCHAR})
+      </foreach>
+  </insert>
+</mapper>

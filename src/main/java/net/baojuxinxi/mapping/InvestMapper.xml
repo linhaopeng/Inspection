@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.baojuxinxi.dao.InvestMapper">
+  <resultMap id="BaseResultMap" type="net.baojuxinxi.pojo.Invest">
+    <id column="invest_id" jdbcType="VARCHAR" property="investId" />
+    <result column="project_id" jdbcType="VARCHAR" property="projectId" />
+    <result column="years" jdbcType="DATE" property="years" />
+    <result column="month_gross" jdbcType="DECIMAL" property="monthGross" />
+    <result column="month_product_value" jdbcType="DECIMAL" property="monthProductValue" />
+    <result column="month_revenue" jdbcType="DECIMAL" property="monthRevenue" />
+    <result column="month_product_amounr" jdbcType="VARCHAR" property="monthProductAmounr" />
+    <result column="month_sale_amount" jdbcType="VARCHAR" property="monthSaleAmount" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="isdeleted" jdbcType="TINYINT" property="isdeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    invest_id, project_id, years, month_gross, month_product_value, month_revenue, month_product_amounr, 
+    month_sale_amount, creator, create_time, isdeleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from invest
+    where invest_id = #{investId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from invest
+    where invest_id = #{investId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.baojuxinxi.pojo.Invest">
+    insert into invest (invest_id, project_id, years, 
+      month_gross, month_product_value, month_revenue, 
+      month_product_amounr, month_sale_amount, creator, 
+      create_time, isdeleted)
+    values (#{investId,jdbcType=VARCHAR}, #{projectId,jdbcType=VARCHAR}, #{years,jdbcType=DATE}, 
+      #{monthGross,jdbcType=DECIMAL}, #{monthProductValue,jdbcType=DECIMAL}, #{monthRevenue,jdbcType=DECIMAL}, 
+      #{monthProductAmounr,jdbcType=VARCHAR}, #{monthSaleAmount,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{isdeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="net.baojuxinxi.pojo.Invest">
+    insert into invest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="investId != null">
+        invest_id,
+      </if>
+      <if test="projectId != null">
+        project_id,
+      </if>
+      <if test="years != null">
+        years,
+      </if>
+      <if test="monthGross != null">
+        month_gross,
+      </if>
+      <if test="monthProductValue != null">
+        month_product_value,
+      </if>
+      <if test="monthRevenue != null">
+        month_revenue,
+      </if>
+      <if test="monthProductAmounr != null">
+        month_product_amounr,
+      </if>
+      <if test="monthSaleAmount != null">
+        month_sale_amount,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="isdeleted != null">
+        isdeleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="investId != null">
+        #{investId,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null">
+        #{projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="years != null">
+        #{years,jdbcType=DATE},
+      </if>
+      <if test="monthGross != null">
+        #{monthGross,jdbcType=DECIMAL},
+      </if>
+      <if test="monthProductValue != null">
+        #{monthProductValue,jdbcType=DECIMAL},
+      </if>
+      <if test="monthRevenue != null">
+        #{monthRevenue,jdbcType=DECIMAL},
+      </if>
+      <if test="monthProductAmounr != null">
+        #{monthProductAmounr,jdbcType=VARCHAR},
+      </if>
+      <if test="monthSaleAmount != null">
+        #{monthSaleAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null">
+        #{isdeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.baojuxinxi.pojo.Invest">
+    update invest
+    <set>
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="years != null">
+        years = #{years,jdbcType=DATE},
+      </if>
+      <if test="monthGross != null">
+        month_gross = #{monthGross,jdbcType=DECIMAL},
+      </if>
+      <if test="monthProductValue != null">
+        month_product_value = #{monthProductValue,jdbcType=DECIMAL},
+      </if>
+      <if test="monthRevenue != null">
+        month_revenue = #{monthRevenue,jdbcType=DECIMAL},
+      </if>
+      <if test="monthProductAmounr != null">
+        month_product_amounr = #{monthProductAmounr,jdbcType=VARCHAR},
+      </if>
+      <if test="monthSaleAmount != null">
+        month_sale_amount = #{monthSaleAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null">
+        isdeleted = #{isdeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where invest_id = #{investId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.baojuxinxi.pojo.Invest">
+    update invest
+    set project_id = #{projectId,jdbcType=VARCHAR},
+      years = #{years,jdbcType=DATE},
+      month_gross = #{monthGross,jdbcType=DECIMAL},
+      month_product_value = #{monthProductValue,jdbcType=DECIMAL},
+      month_revenue = #{monthRevenue,jdbcType=DECIMAL},
+      month_product_amounr = #{monthProductAmounr,jdbcType=VARCHAR},
+      month_sale_amount = #{monthSaleAmount,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      isdeleted = #{isdeleted,jdbcType=TINYINT}
+    where invest_id = #{investId,jdbcType=VARCHAR}
+  </update>
+</mapper>

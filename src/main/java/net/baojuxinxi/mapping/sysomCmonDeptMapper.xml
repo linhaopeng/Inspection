@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.baojuxinxi.dao.SysomCmonDeptMapper">
+  <resultMap id="BaseResultMap" type="net.baojuxinxi.pojo.SysomCmonDept">
+    <id column="common_dept_id" jdbcType="VARCHAR" property="commonDeptId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="principal" jdbcType="VARCHAR" property="principal" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="isdeleted" jdbcType="TINYINT" property="isdeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    common_dept_id, NAME, principal, phone, address, creator, create_time, isdeleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_common_dept
+    where common_dept_id = #{commonDeptId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_common_dept
+    where common_dept_id = #{commonDeptId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.baojuxinxi.pojo.SysomCmonDept">
+    insert into sys_common_dept (common_dept_id, NAME, principal, 
+      phone, address, creator, 
+      create_time, isdeleted)
+    values (#{commonDeptId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{principal,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{isdeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="net.baojuxinxi.pojo.SysomCmonDept">
+    insert into sys_common_dept
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commonDeptId != null">
+        common_dept_id,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="principal != null">
+        principal,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="isdeleted != null">
+        isdeleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commonDeptId != null">
+        #{commonDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="principal != null">
+        #{principal,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null">
+        #{isdeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.baojuxinxi.pojo.SysomCmonDept">
+    update sys_common_dept
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="principal != null">
+        principal = #{principal,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null">
+        isdeleted = #{isdeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where common_dept_id = #{commonDeptId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.baojuxinxi.pojo.SysomCmonDept">
+    update sys_common_dept
+    set NAME = #{name,jdbcType=VARCHAR},
+      principal = #{principal,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      isdeleted = #{isdeleted,jdbcType=TINYINT}
+    where common_dept_id = #{commonDeptId,jdbcType=VARCHAR}
+  </update>
+    <!-- 分页 -->
+  <select id="selectPageList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_common_dept
+    <where>
+    		<if test="name != null and name != '' ">
+    			NAME LIKE CONCAT(CONCAT('%', #{name }),'%') 
+    		</if>
+    		
+    		<if test="isdeleted != null and isdeleted != '' or isdeleted == 0 ">
+    			AND isdeleted = #{isdeleted,jdbcType=TINYINT}
+    		</if>
+    		
+    	</where>
+    	ORDER BY create_time 
+  </select>
+  <!-- 根据名字查询 -->
+  <select id="selectByPrimaryName" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_common_dept
+    <where>
+    			NAME =#{name,jdbcType=VARCHAR}
+    			AND isdeleted = #{isdeleted,jdbcType=TINYINT}
+    	</where>
+  </select>
+  <!-- 删除 -->
+   <update id="update_deleteAll" parameterType="java.util.Map">
+    update sys_common_dept
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="principal != null">
+        principal = #{principal,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null">
+        isdeleted = #{isdeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where common_dept_id in
+    <foreach item="idItem" collection="idItems" index="index" open="(" separator="," close=")">
+		#{idItem}
+	</foreach>
+  </update>
+</mapper>

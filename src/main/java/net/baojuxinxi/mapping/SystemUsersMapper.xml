@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.baojuxinxi.dao.SystemUsersMapper" >
+  <resultMap id="BaseResultMap" type="net.baojuxinxi.pojo.SystemUsers" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="usercname" property="usercname" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="head_img" property="headImg" jdbcType="VARCHAR" />
+    <result column="ranks" property="ranks" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="com_id" property="comId" jdbcType="INTEGER" />
+     <result column="department_id" property="departmentId" jdbcType="INTEGER" />
+      <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="is_use" property="isUse" jdbcType="INTEGER" />
+    <result column="latest_login_time" property="latestLoginTime" jdbcType="TIMESTAMP" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+     <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="latest_update_time" property="latestUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="latest_update_by" property="latestUpdateBy" jdbcType="VARCHAR" />
+    <result column="priority" property="priority" jdbcType="VARCHAR" />
+  </resultMap>
+	<resultMap type="net.baojuxinxi.pojo.SystemUsers" id="roleResultMap" extends="BaseResultMap">
+		<collection property="role" javaType="net.baojuxinxi.pojo.Roles">
+			<id column="role_id" property="roleId" jdbcType="INTEGER" />
+		    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+		    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+		    <result column="role_key" property="roleKey" jdbcType="VARCHAR" />
+		    <result column="role_level" property="roleLevel" jdbcType="INTEGER" />
+		    <result column="description" property="description" jdbcType="VARCHAR" />
+		    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		    <result column="latest_update_time" property="latestUpdateTime" jdbcType="TIMESTAMP" />
+		</collection>
+	</resultMap>
+  <sql id="Base_Column_List" >
+    id, username,usercname, password, phone, sex, address, email, head_img, ranks, description, 
+    com_id,department_id,position, remarks, is_use, latest_login_time, created_time,created_by, latest_update_time,latest_update_by,priority
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from system_users
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectSystemUser" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from system_users 
+    <where>
+    	<if test="id != null and id != '' ">
+    		id = #{id }
+    	</if>
+    	<if test="username != null and username != '' ">
+    		username = #{username }
+    	</if>
+    	<if test="isUse != null and isUse != '' or isUse == 0 ">
+    		AND is_use = #{isUse }
+    	</if>
+    	<if test="password != null and password != '' ">
+    		AND password = #{password }
+    	</if>
+    	 <!-- group by priority -->
+    </where>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from system_users
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+ <insert id="insert" parameterType="net.baojuxinxi.pojo.SystemUsers" >
+    insert into system_users ( id, 
+    username,
+    usercname, 
+    password, 
+    phone, 
+    sex, 
+    address,
+     email, 
+     head_img, 
+     ranks, 
+     description, 
+    com_id,
+    department_id,
+    position,
+     remarks, 
+     is_use, 
+     latest_login_time,
+     created_time,
+     created_by, 
+     latest_update_time,
+     latest_update_by,
+     priority)
+    values (
+      #{id,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR},
+      #{usercname,jdbcType=VARCHAR},
+      #{password,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, 
+      #{headImg,jdbcType=VARCHAR},
+      #{ranks,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, 
+      #{comId,jdbcType=INTEGER}, 
+      #{departmentId,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, 
+      #{isUse,jdbcType=INTEGER},
+      #{latestLoginTime,jdbcType=TIMESTAMP}, 
+      #{createdTime,jdbcType=TIMESTAMP}, 
+      #{createdBy,jdbcType=VARCHAR}, 
+      #{latestUpdateTime,jdbcType=TIMESTAMP}),
+      #{latestUpdateBy,jdbcType=VARCHAR},
+      #{priority,jdbcType=VARCHAR},
+  </insert>
+  <insert id="insertSelective" parameterType="net.baojuxinxi.pojo.SystemUsers" >
+    insert into system_users
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+        </if>
+      <if test="usercname != null" >
+        usercname,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="address != null" >
+        address,
+        </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="headImg != null" >
+        head_img,
+        </if>
+        <if test="ranks != null" >
+        ranks,
+        </if>
+        <if test="description != null" >
+        description,
+        </if>
+      <if test="comId != null" >
+        com_id,
+      </if>
+      <if test="departmentId != null" >
+        department_id,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+        </if>
+        <if test="isUse != null" >
+        is_use,
+        </if>
+      <if test="latestLoginTime != null" >
+        latest_login_time,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="latestUpdateTime != null" >
+        latest_update_time,
+      </if>
+      <if test="latestUpdateBy != null" >
+        latest_update_by,
+      </if>
+      <if test="priority != null" >
+        priority,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="usercname != null" >
+        #{usercname,jdbcType=VARCHAR},
+        </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+       <if test="headImg != null" >
+        #{headImg,jdbcType=VARCHAR},
+        </if>
+      <if test="ranks != null" >
+        #{ranks,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="comId != null" >
+        #{comId,jdbcType=INTEGER},
+      </if>
+       <if test="departmentId != null" >
+        #{departmentId,jdbcType=VARCHAR},
+      </if>
+       <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="isUse != null" >
+        #{isUse,jdbcType=INTEGER},
+      </if>
+      <if test="latestLoginTime != null" >
+        #{latestLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="latestUpdateTime != null" >
+        #{latestUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+       <if test="latestUpdateBy != null" >
+        #{latestUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.baojuxinxi.pojo.SystemUsers" >
+    update system_users
+    <set >
+        <if test="username != null" >
+        username  =#{username,jdbcType=VARCHAR},
+      </if>
+       <if test="usercname != null" >
+        usercname = #{usercname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="ranks != null" >
+        ranks = #{ranks,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="comId != null" >
+        com_id = #{comId,jdbcType=INTEGER},
+      </if>
+       <if test="departmentId != null" >
+        department_id = #{departmentId,jdbcType=VARCHAR},
+      </if>
+       <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="isUse != null" >
+        is_use = #{isUse,jdbcType=INTEGER},
+      </if>
+      <if test="latestLoginTime != null" >
+        latest_login_time = #{latestLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="latestUpdateTime != null" >
+        latest_update_time = #{latestUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+       <if test="latestUpdateBy != null" >
+        latest_update_by = #{latestUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        priority = #{priority,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateSystemUsersBatch" parameterType="java.util.Map" >
+    update system_users
+    <set >
+      <if test="username != null" >
+        username  =#{username,jdbcType=VARCHAR},
+      </if>
+       <if test="usercname != null" >
+        usercname = #{usercname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="ranks != null" >
+        ranks = #{ranks,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="comId != null" >
+        com_id = #{comId,jdbcType=INTEGER},
+      </if>
+       <if test="departmentId != null" >
+        department_id = #{departmentId,jdbcType=VARCHAR},
+      </if>
+       <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="isUse != null" >
+        is_use = #{isUse,jdbcType=INTEGER},
+      </if>
+      <if test="latestLoginTime != null" >
+        latest_login_time = #{latestLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="latestUpdateTime != null" >
+        latest_update_time = #{latestUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+       <if test="latestUpdateBy != null" >
+        latest_update_by = #{latestUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null" >
+        priority = #{priority,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id in
+    <foreach item="idItem" collection="idItems" index="index" open="(" separator="," close=")">
+		#{idItem} 
+	</foreach>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.baojuxinxi.pojo.SystemUsers" >
+    update system_users
+      set 
+      username = #{username,jdbcType=VARCHAR},
+      usercname = #{usercname,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      head_img = #{headImg,jdbcType=VARCHAR},
+      ranks = #{ranks,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      com_id = #{com_id,jdbcType=INTEGER},
+      department_id = #{departmentId,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      is_use = #{isUse,jdbcType=INTEGER},
+      latest_login_time = #{latestLoginTime,jdbcType=TIMESTAMP},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      latest_update_time = #{latestUpdateTime,jdbcType=TIMESTAMP},
+      latest_update_by = #{latestUpdateBy,jdbcType=VARCHAR},
+      priority = #{priority,jdbcType=VARCHAR}
+      where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  	<select id="selectUser" resultMap="BaseResultMap" parameterType="java.util.Map" >
+  		select 
+   	   <include refid="Base_Column_List" />
+    	from system_users 
+    	<where>
+    		<if test="username != null and username != '' ">
+    			username LIKE CONCAT(CONCAT('%', #{username }),'%') 
+    		</if>
+    		<if test="usercname != null and username != '' ">
+    			AND usercname LIKE CONCAT(CONCAT('%', #{usercname }),'%') 
+    		</if>
+    		<if test="isUse != null and isUse != '' or isUse == 0 ">
+    			AND is_use = #{isUse }
+    		</if>
+    		<if test="departmentId != null and isUse != '' or isUse == 0 ">
+				AND department_id = #{departmentId }
+    		</if>
+    		<if test="departmentIdList != null and departmentIdList != '' or departmentIdList == 0 ">
+    		 	AND department_id in 
+   					 <foreach collection="departmentIdList" item="departmentId" index="index" open="(" close=")" separator=",">
+    					#{departmentId,jdbcType=INTEGER} 
+    				</foreach>
+    		</if>
+    		order by priority ASC,created_time desc
+    	</where>
+  	</select>
+  	<!-- 列表关联角色 -->
+  	  <sql id="Base_List" >
+	    u.id, u.username,usercname, u.password, u.phone, u.sex, u.address, u.email, u.head_img, u.ranks, u.description, 
+	    u.com_id,u.department_id,u.position, u.remarks, u.is_use, u.latest_login_time, u.created_time,u.created_by, u.latest_update_time,u.latest_update_by,u.priority
+	  </sql>
+	    <sql id="role_List" >
+	    r.role_id, r.role_name, r.parent_id, r.role_key, r.role_level, r.description, r.created_time, r.latest_update_time
+	  </sql>
+  		<select id="selectUser_role" resultMap="roleResultMap" parameterType="java.util.Map" >
+  		SELECT 
+   	   <include refid="Base_List" />,<include refid="role_List" />
+    		FROM system_users u 
+			INNER JOIN user_roles ur ON ur.user_id=u.id 
+			INNER JOIN roles r ON ur.role_id=r.role_id
+    	<where>
+    		<if test="username != null and username != '' ">
+    			u.username LIKE CONCAT(CONCAT('%', #{username }),'%') 
+    		</if>
+    		<if test="usercname != null and username != '' ">
+    			AND u.usercname LIKE CONCAT(CONCAT('%', #{usercname }),'%') 
+    		</if>
+    		<if test="isUse != null and isUse != '' or isUse == 0 ">
+    			AND u.is_use = #{isUse }
+    		</if>
+    		<if test="departmentId != null and isUse != '' or isUse == 0 ">
+				AND u.department_id = #{departmentId }
+    		</if>
+    		<if test="departmentIdList != null and departmentIdList != '' or departmentIdList == 0 ">
+    		 	AND u.department_id in 
+   					 <foreach collection="departmentIdList" item="departmentId" index="index" open="(" close=")" separator=",">
+    					#{departmentId,jdbcType=INTEGER} 
+    				</foreach>
+    		</if>
+    		order by u.priority ASC,u.created_time desc
+    	</where>
+  	</select>
+</mapper>

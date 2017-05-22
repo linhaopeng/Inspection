@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.baojuxinxi.dao.ProblemAnnexMapper">
+  <resultMap id="BaseResultMap" type="net.baojuxinxi.pojo.ProblemAnnex">
+    <id column="problem_annex_id" jdbcType="VARCHAR" property="problemAnnexId" />
+    <result column="problem_id" jdbcType="VARCHAR" property="problemId" />
+    <result column="problem_annex_name" jdbcType="VARCHAR" property="problemAnnexName" />
+    <result column="problem_annex_type" jdbcType="TINYINT" property="problemAnnexType" />
+    <result column="problem_annex_path" jdbcType="VARCHAR" property="problemAnnexPath" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    problem_annex_id, problem_id, problem_annex_name, problem_annex_type, problem_annex_path
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from problem_annex
+    where problem_annex_id = #{problemAnnexId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectBy_problemKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from problem_annex
+    where problem_id = #{problemId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from problem_annex
+    where problem_annex_id = #{problemAnnexId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteBy_problemKey" parameterType="java.lang.String">
+    delete from problem_annex
+    where problem_id = #{problemId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.baojuxinxi.pojo.ProblemAnnex">
+    insert into problem_annex (problem_annex_id, problem_id, problem_annex_name, 
+      problem_annex_type, problem_annex_path)
+    values (#{problemAnnexId,jdbcType=VARCHAR}, #{problemId,jdbcType=VARCHAR}, #{problemAnnexName,jdbcType=VARCHAR}, 
+      #{problemAnnexType,jdbcType=TINYINT}, #{problemAnnexPath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.baojuxinxi.pojo.ProblemAnnex">
+    insert into problem_annex
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="problemAnnexId != null">
+        problem_annex_id,
+      </if>
+      <if test="problemId != null">
+        problem_id,
+      </if>
+      <if test="problemAnnexName != null">
+        problem_annex_name,
+      </if>
+      <if test="problemAnnexType != null">
+        problem_annex_type,
+      </if>
+      <if test="problemAnnexPath != null">
+        problem_annex_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="problemAnnexId != null">
+        #{problemAnnexId,jdbcType=VARCHAR},
+      </if>
+      <if test="problemId != null">
+        #{problemId,jdbcType=VARCHAR},
+      </if>
+      <if test="problemAnnexName != null">
+        #{problemAnnexName,jdbcType=VARCHAR},
+      </if>
+      <if test="problemAnnexType != null">
+        #{problemAnnexType,jdbcType=TINYINT},
+      </if>
+      <if test="problemAnnexPath != null">
+        #{problemAnnexPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.baojuxinxi.pojo.ProblemAnnex">
+    update problem_annex
+    <set>
+      <if test="problemId != null">
+        problem_id = #{problemId,jdbcType=VARCHAR},
+      </if>
+      <if test="problemAnnexName != null">
+        problem_annex_name = #{problemAnnexName,jdbcType=VARCHAR},
+      </if>
+      <if test="problemAnnexType != null">
+        problem_annex_type = #{problemAnnexType,jdbcType=TINYINT},
+      </if>
+      <if test="problemAnnexPath != null">
+        problem_annex_path = #{problemAnnexPath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where problem_annex_id = #{problemAnnexId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.baojuxinxi.pojo.ProblemAnnex">
+    update problem_annex
+    set problem_id = #{problemId,jdbcType=VARCHAR},
+      problem_annex_name = #{problemAnnexName,jdbcType=VARCHAR},
+      problem_annex_type = #{problemAnnexType,jdbcType=TINYINT},
+      problem_annex_path = #{problemAnnexPath,jdbcType=VARCHAR}
+    where problem_annex_id = #{problemAnnexId,jdbcType=VARCHAR}
+  </update>
+  <!-- 批量插入 -->
+  <insert id="insertSelectivelist" parameterType="java.util.List">
+    insert into problem_annex (problem_annex_id, problem_id, problem_annex_name, 
+      problem_annex_type, problem_annex_path)
+    values 
+    <foreach collection="list" item="item" index="index" separator=",">  
+    (#{item.problemAnnexId,jdbcType=VARCHAR}, #{item.problemId,jdbcType=VARCHAR}, #{item.problemAnnexName,jdbcType=VARCHAR}, 
+      #{item.problemAnnexType,jdbcType=TINYINT}, #{item.problemAnnexPath,jdbcType=VARCHAR})
+      </foreach>
+  </insert>
+</mapper>

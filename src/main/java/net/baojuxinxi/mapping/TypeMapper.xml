@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.baojuxinxi.dao.TypeMapper">
+  <resultMap id="BaseResultMap" type="net.baojuxinxi.pojo.Type">
+    <id column="type_id" jdbcType="VARCHAR" property="typeId" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="parent_type_id" jdbcType="VARCHAR" property="parentTypeId" />
+    <result column="list_no" jdbcType="INTEGER" property="listNo" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="isdeleted" jdbcType="TINYINT" property="isdeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    type_id, CODE, NAME, description, parent_type_id, list_no, creator, create_time, 
+    isdeleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from type
+    where type_id = #{typeId,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from type
+    where type_id = #{typeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.baojuxinxi.pojo.Type">
+    insert into type (type_id, CODE, NAME, 
+      description, parent_type_id, list_no, 
+      creator, create_time, isdeleted
+      )
+    values (#{typeId,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{parentTypeId,jdbcType=VARCHAR}, #{listNo,jdbcType=INTEGER}, 
+      #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{isdeleted,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.baojuxinxi.pojo.Type">
+    insert into type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="parentTypeId != null">
+        parent_type_id,
+      </if>
+      <if test="listNo != null">
+        list_no,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="isdeleted != null">
+        isdeleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="typeId != null">
+        #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="parentTypeId != null">
+        #{parentTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="listNo != null">
+        #{listNo,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null">
+        #{isdeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.baojuxinxi.pojo.Type">
+    update type
+    <set>
+      <if test="code != null">
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="parentTypeId != null">
+        parent_type_id = #{parentTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="listNo != null and listNo != ''">
+        list_no = #{listNo,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null and isdeleted != '' or isdeleted == 0">
+        isdeleted = #{isdeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where type_id = #{typeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.baojuxinxi.pojo.Type">
+    update type
+    set CODE = #{code,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      parent_type_id = #{parentTypeId,jdbcType=VARCHAR},
+      list_no = #{listNo,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      isdeleted = #{isdeleted,jdbcType=TINYINT}
+    where type_id = #{typeId,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <!-- 模糊查询项目类型 -->
+  	<select id="selectTypeList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+  		select 
+   	   <include refid="Base_Column_List" />
+    	from type 
+    	<where>
+    		<if test="name != null and name != '' ">
+    			NAME LIKE CONCAT(CONCAT('%', #{name }),'%') 
+    		</if>
+    		<if test="isdeleted != null and isdeleted != '' or isdeleted == 0 ">
+    			AND isdeleted = #{isdeleted }
+    		</if>
+    		
+    	</where>
+    	ORDER BY list_no ASC,create_time DESC
+  	</select>
+  	
+  	<!-- 删除 -->
+  	<update id="updateSystemTypeBatch" parameterType="java.util.Map">
+    update type
+    <set>
+      <if test="code != null">
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="parentTypeId != null">
+        parent_type_id = #{parentTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="listNo != null and listNo != ''">
+        list_no = #{listNo,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null and isdeleted != '' or isdeleted == 0">
+        isdeleted = #{isdeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where type_id in
+    <foreach item="idItem" collection="idItems" index="index" open="(" separator="," close=")">
+		#{idItem}
+	</foreach>
+  </update>
+  <select id="selectList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from type
+    <where>
+    	<if test="isdeleted != null and isdeleted != '' or isdeleted == 0">
+        isdeleted = #{isdeleted,jdbcType=TINYINT},
+      	</if>
+    </where>
+  </select>
+</mapper>

@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+
+
+body{ overflow: auto !important;} .modal{ overflow: auto !important;} 
+
+/* *{ 
+    margin:0; 
+    padding:0; 
+} 
+body{font-size:12px;}h1{font-size:15px;} 
+.wrap{ 
+    font-size: 12px; 
+    margin:40px auto; 
+    width:400px; 
+}  */
+/*进度条样式*/ 
+.progressbar_1{ 
+    background-color:#eee; 
+    color:#222; 
+    height:16px; 
+    width:150px; 
+    border:1px solid #bbb; 
+} 
+.progressbar_1 .bar { 
+    background-color:#6CAF00; 
+    height:16px; 
+    width:0; 
+} 
+/*绝对定位*/ 
+.progressbar_2{ 
+    background-color:#eee; 
+    color:#222; 
+    height:16px; 
+    width:150px; 
+    border:1px solid #bbb; 
+    text-align:center; 
+    position:relative; 
+} 
+.progressbar_2 .bar { 
+    background-color:#6CAF00; 
+    height:16px; 
+    width:0; 
+    position:absolute; 
+    left:0; 
+    top:0; 
+} 
+.progressbar_2 .text { 
+    height:16px; 
+    position:absolute; 
+    left:0; 
+    top:0; 
+    width:100%; 
+    line-height:16px; 
+} 
+/*绝对定位 + z-index */ 
+.progressbar_3{ 
+    background-color:#eee; 
+    color:#222; 
+    height:18px; 
+    width:150px; 
+    border:1px solid #bbb; 
+    text-align:center; 
+    position:relative; 
+} 
+.progressbar_3 .bar { 
+    background-color:#6CAF00; 
+    height:17px; 
+    width:0; 
+    position:absolute; 
+    left:0; 
+    top:0; 
+    z-index:10; 
+} 
+.progressbar_3 .text { 
+    height:16px; 
+    position:absolute; 
+    left:0; 
+    top:0; 
+    width:100%; 
+    line-height:16px; 
+     
+    z-index:100; 
+}
+.see_a{
+	width: 100px;
+    float: left;
+    font-weight: 700;
+    font-size: 16px;
+        margin-left: 10px;
+    margin-top: 10px;
+}
+.see_b{
+	width: 245px;
+    float: left;
+}
+.my_h{
+	width: 35%; float: left;    margin-left: 30px;
+}
+.select_all{
+	
+		    width: 225px;
+		    font-size: 15px;
+		    background-color: #FFF;
+		    background-image: none;
+		    border: 1px solid #e5e6e7;
+		    border-radius: 1px;
+		    color: inherit;
+		    display: block;
+		    padding: 6px 12px;
+
+}
+.max_img{width:100%;height:auto;}
+.min_img{width:100px;height:auto;}
+ 
