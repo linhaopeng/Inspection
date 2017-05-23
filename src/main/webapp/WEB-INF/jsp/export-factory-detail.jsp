@@ -148,7 +148,7 @@ select {
 					style="margin-left: inherit; width: 98%">
 					<div class="page-header " style="float: left; width: 80%;">
 						<h1 style="font-weight: 700; font-size: 22px; display: inline;">
-							Final Inspection Report</h1>
+							Factory Audit Report</h1>
 					</div>
 					<div style="float: right">
 						<div style="margin-right: 30px; margin-top: 20px; width: 120px;">
@@ -448,7 +448,7 @@ select {
 							</table>
 							<div class="my_h" style="width: 80%; clear: both;">
 								<p>Remarks</p>
-								<p><textarea rows="10" cols="80"></textarea></p>
+								<p><textarea rows="5" cols="120"></textarea></p>
 							</div>
 							<table class="table t_titil" style="">
 								<tbody>
@@ -481,7 +481,7 @@ select {
 							</table>
 							<div class="my_h" style="width: 80%; clear: both;">
 								<p>Remarks</p>
-								<p><textarea rows="10" cols="80"></textarea></p>
+								<p><textarea rows="5" cols="120"></textarea></p>
 							</div>
 							<table class="table t_titil" style="">
 								<tbody>
@@ -529,7 +529,7 @@ select {
 							</table>
 							<div class="my_h" style="width: 80%; clear: both;">
 								<p>Remarks</p>
-								<p><textarea rows="10" cols="80"></textarea></p>
+								<p><textarea rows="5" cols="120"></textarea></p>
 							</div>
 							<table class="table t_titil" style="">
 								<tbody>
@@ -602,7 +602,7 @@ select {
 							</table>
 							<div class="my_h" style="width: 80%; clear: both;">
 								<p>Remarks</p>
-								<p><textarea rows="10" cols="80"></textarea></p>
+								<p><textarea rows="5" cols="120"></textarea></p>
 							</div>
 							<table class="table t_titil" style="">
 								<tbody>
@@ -675,7 +675,7 @@ select {
 							</table>
 							<div class="my_h" style="width: 80%; clear: both;">
 								<p>Remarks</p>
-								<p><textarea rows="10" cols="80"></textarea></p>
+								<p><textarea rows="5" cols="120"></textarea></p>
 							</div>
 							
 							<table class="table t_titil" style="">
@@ -785,7 +785,7 @@ select {
 							</table>
 							<div class="my_h" style="width: 80%; clear: both;">
 								<p>Remarks</p>
-								<p><textarea rows="10" cols="80"></textarea></p>
+								<p><textarea rows="5" cols="120"></textarea></p>
 							</div>
 							<table class="table t_titil" style="">
 								<tbody>
@@ -858,7 +858,7 @@ select {
 							</table>
 							<div class="my_h" style="width: 80%; clear: both;">
 								<p>Remarks</p>
-								<p><textarea rows="10" cols="80"></textarea></p>
+								<p><textarea rows="5" cols="120"></textarea></p>
 							</div>
 							<table class="table t_titil" style="">
 								<tbody>
@@ -916,7 +916,7 @@ select {
 							</table>
 							<div class="my_h" style="width: 80%; clear: both;">
 								<p>Remarks</p>
-								<p><textarea rows="10" cols="80"></textarea></p>
+								<p><textarea rows="5" cols="120"></textarea></p>
 							</div>
 							<table class="table t_titil" style="">
 								<tbody>
@@ -974,7 +974,7 @@ select {
 							</table>
 							<div class="my_h" style="width: 80%; clear: both;">
 								<p>Remarks</p>
-								<p><textarea rows="10" cols="80"></textarea></p>
+								<p><textarea rows="5" cols="120"></textarea></p>
 							</div>
 						</div>
                         <div class="tab-pane" id="panel-419304">
@@ -987,19 +987,19 @@ select {
 							</table>
 							<table class="mytable">
 								<tr>
-									<td style="padding-left:10px; width:15%;">Total Score</td>
+									<td style="width:15%;">Total Score</td>
 									<td style="width:30%;"><input value="85"  style="width:90%"></td>
-									<td style="width:15%;">Grade</td>
-									<td style="width:30%;"><input value="13457" readOnly disabled style="width:90%"></td>
+									<td style="width:10%;padding-left: 20px;">Grade</td>
+									<td style="width:30%;"><input value="GOOD" readOnly disabled style="width:90%;background-color: #dff0d8;border: 0;"></td>
 								</tr>
 								<tr>
-									<td style="padding-left:10px; width:15%;">Approved as supplier</td>
+									<td style="width:15%;">Approved as supplier</td>
 									<td style="width:30%;"><select style="width:90%"><option>YES</option><option>NO</option></select></td>
 								</tr>
 							</table>
 							<div class="my_h" style="width: 80%; clear: both;">
 								<p>Overall Remarks</p>
-								<p><textarea rows="10" cols="80"></textarea></p>
+								<p><textarea rows="5" cols="120"></textarea></p>
 							</div>
 							<table class="table t_titil" style="">
 								<tbody>
@@ -1009,7 +1009,7 @@ select {
 								</tbody>
 							</table>
 							<table  class="table table-bordered" style="margin-left: 20px; height: 70px;" >
-								<tr>
+								<tr style="text-align: center;background-color: #e6e399">
 									<td>Root Causes Identified</td>
 									<td>Corrective/Preventive Actions</td>
 									<td>Expected Completion Date</td>

@@ -69,7 +69,7 @@ ul.ztree {
 					<div class="row clearfix">
 						<div class="col-md-12 column">
 							<div class="page-header">
-								<h1 style="font-weight: 700; font-size: 22px;">Factory List</h1>
+								<h1 style="font-weight: 700; font-size: 22px;">Factory Audit List</h1>
 							</div>
 						</div>
 					</div>
@@ -79,7 +79,7 @@ ul.ztree {
 					<form class="fadeInDown">
 						<div class="form-inline f_s">
 							<div class="f_a" id="getQuery">
-								<button type="button" class="btn btn-primary">Create Factory </button>
+								<button type="button" class="btn btn-primary" id="createAuditTask">Create Audit Task</button>
 							</div>
 						</div>
 					</form>
@@ -93,9 +93,9 @@ ul.ztree {
 									<th>Factory name（Chinese）</th>
 									<th>Factory name（English）</th>
 									<th>Contact person(Supplier)</th>
-									<th>Phone(Supplier)</th>
+									<th>Status</th>
 									<th>Suggested audit date</th>
-									<th>Report</th>
+									<th>Audit Report</th>
 								</tr>
 							</thead>
 							<tbody id="tableBody">
@@ -105,9 +105,9 @@ ul.ztree {
 									<td>广东省纺织品进出口股份有限公司</td>
 									<td>Guangdong Textiles Imp.&Exp.CO.LTD.</td>
 									<td>huangjn</td>
-									<td>020-83558988</td>
+									<td>Finished</td>
 									<td>20.09.2017</td>
-									<td><a href="${ctx }/export_factory_detail?id=1">In-line Factory Report</a></td>
+									<td><a href="${ctx }/export_factory_detail?id=1">Factory Audit Report</a></td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
@@ -115,9 +115,9 @@ ul.ztree {
 									<td>广东省家具股份有限公司</td>
 									<td>Guangdong Textiles Imp.&Exp.CO.LTD.</td>
 									<td>wangxu</td>
-									<td>020-83558977</td>
+									<td>Doing</td>
 									<td>20.08.2017</td>
-									<td><a href="${ctx }/export_factory_detail?id=1">In-line Factory Report</a></td>
+									<td>In-line Factory Report</td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
@@ -125,9 +125,9 @@ ul.ztree {
 									<td>广东省羊毛进出口股份有限公司</td>
 									<td>Guangdong Wool CO.LTD.</td>
 									<td>lixy</td>
-									<td>020-83558966</td>
+									<td>Doing</td>
 									<td>20.07.2017</td>
-									<td><a href="${ctx }/export_factory_detail?id=1">Final Factory Report</a></td>
+									<td>In-line Factory Report</a></td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
@@ -135,9 +135,9 @@ ul.ztree {
 									<td>广东省手机配件股份有限公司</td>
 									<td>Guangdong Phone accessories CO.LTD.</td>
 									<td>wengxt</td>
-									<td>020-83558955</td>
+									<td>To be started</td>
 									<td>20.06.2017</td>
-									<td><a href="${ctx }/export_factory_detail?id=1">Final Factory Report</a></td>
+									<td>In-line Factory Report</td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
@@ -145,9 +145,9 @@ ul.ztree {
 									<td>广东省服饰用品股份有限公司</td>
 									<td>Guangdong Clothing CO.LTD.</td>
 									<td>linhp</td>
-									<td>020-83558944</td>
+									<td>Finished</td>
 									<td>20.05.2017</td>
-									<td><a href="${ctx }/export_factory_detail?id=1">Final Factory Report</a></td>
+									<td><a href="${ctx }/export_factory_detail?id=1">Factory Audit Report</a></td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
@@ -155,9 +155,9 @@ ul.ztree {
 									<td>广东省印刷股份有限公司</td>
 									<td>Guangdong Printing Imp.&Exp.CO.LTD.</td>
 									<td>chenxt</td>
-									<td>020-83558933</td>
+									<td>To be started</td>
 									<td>20.04.2017</td>
-									<td><a href="${ctx }/export_factory_detail?id=1">In-line Factory Report</a></td>
+									<td>In-line Factory Report</td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
@@ -165,9 +165,9 @@ ul.ztree {
 									<td>广东省毛织品进出口股份有限公司</td>
 									<td>Guangdong Wool CO.LTD.</td>
 									<td>chenlf</td>
-									<td>020-83558922</td>
+									<td>Finished</td>
 									<td>20.03.2017</td>
-									<td><a href="${ctx }/export_factory_detail?id=1">In-line Factory Report</a></td>
+									<td><a href="${ctx }/export_factory_detail?id=1">Factory Audit Report</a></td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
@@ -175,9 +175,9 @@ ul.ztree {
 									<td>广东省雷达接收股份有限公司</td>
 									<td>Guangdong RadarReception Imp.&Exp.CO.LTD.</td>
 									<td>fangde</td>
-									<td>020-83558911</td>
+									<td>To be started</td>
 									<td>20.02.2017</td>
-									<td><a href="${ctx }/export_factory_detail?id=1">In-line Factory Report</a></td>
+									<td>In-line Factory Report</td>
 								</tr>
 								
 							</tbody>
@@ -208,6 +208,112 @@ ul.ztree {
 			</div>
 		</div>
 	</div>
+	
+	<div class="modal inmodal" id="companyEditModal" tabindex="-1" role="dialog"
+			aria-hidden="true">
+		<div class="modal-dialog">
+			<form class="modal-content animated fadeInDown" id="accessInfoForm">
+				<div class="modal-header" style="padding: 10px;">
+					<button type="button" class="close" data-dismiss="modal" style="margin: 10px 15px 0px 0px;">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h6 class="modal-title">Factory Audit Application Form</h6>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+					    <label for="deviceId">Supplier：</label>
+					    <select class="form-control" name="cardReader" id="cardReader">
+	                        <option value="0">Guangdong Textiles Imp.&Exp.CO.LTD.</option>
+	                        <option value="1">Wisdom Fashion International</option>
+	                        <option value="2">Zhuyan Fashion International</option>
+                        </select>
+					  </div>
+					  <div class="form-group">
+					    <label for="deviceName">Supplier number：</label>
+					    <input type="text" class="form-control" id="deviceName" name="deviceName" value="13457" maxlength="20">
+					  </div>
+					  <div class="form-group">
+					    <label for="installedPosition">Supplier address：</label>
+					    <input type="text" class="form-control" id="deviceName" name="deviceName" value="7/F,No.168 Xiao Bei Road,Guangzhou,P.R.China" maxlength="20">
+					  </div>
+					  <div class="form-group">
+					    <label for="isBuzzing">Factory name（Chinese）：</label>
+					    <input type="text" class="form-control" id="deviceName" name="deviceName" value="广东省纺织品进出口股份有限公司" maxlength="20">
+					  </div>
+					  <div class="form-group">
+					    <label for="lockActionTime">Factory name（English）：</label>
+	                    <input type="text" class="form-control" id="lockActionTime" name="lockActionTime" maxlength="10" value="Guangdong Textiles Imp.&Exp.CO.LTD." >
+					  </div>
+					  <div class="form-group">
+					    <label for="openTimeout">Factory address：</label>
+	                    <input type="text" class="form-control" id="openTimeout" name="openTimeout" maxlength="10" value="7/F,No.168 Xiao Bei Road,Guangzhou,P.R.China">
+					  </div>
+					  <div class="form-group">
+					    <label for="pressInterval">Province/City：</label>
+	                    <input type="text" class="form-control" id="pressInterval" name="pressInterval" maxlength="10" value="GUANGDONG" >
+					  </div>
+					  <div class="form-group">
+					    <label for="pressNumber">Contact person(Supplier)：</label>
+	                    <input type="text" class="form-control" id="pressNumber" name="pressNumber" maxlength="10" value="huangjn" >
+					  </div>
+					  <div class="form-group">
+					    <label for="cardReader">Phone(Supplier)：</label>
+	                    <input type="text" class="form-control" id="pressNumber" name="pressNumber" maxlength="10" value="020-83558988" >
+					  </div>
+					  <div class="form-group">
+					    <label for="pilotLight">Email (Supplier)：</label>
+	                    <input type="text" class="form-control" id="pressNumber" name="pressNumber" maxlength="10" value="huangjn@gdtex.com" >
+					    
+					  </div>
+					  <div class="form-group">
+					    <label for="readInterval">Contact person(Factory)：</label>
+	                    <input type="text" class="form-control" id="readInterval" name="readInterval" maxlength="10" value="iceroy" >
+					  </div>
+					  <div class="form-group">
+					    <label for="readInterval">Phone(Factory)：</label>
+	                    <input type="text" class="form-control" id="readInterval" name="readInterval" maxlength="10" value="020-83558988" >
+					  </div>
+					  <div class="form-group">
+					    <label for="readInterval">Email(Factory)：</label>
+	                    <input type="text" class="form-control" id="readInterval" name="readInterval" maxlength="10" value="iceroy@foxmial.com" >
+					  </div>
+					  <div class="form-group">
+					    <label for="readInterval">Type of Audit：</label>
+	                    <select class="form-control" name="pilotLight" id="pilotLight">
+	                        <option value="0">FE</option>
+	                        <option value="1">RE FE</option>
+                        </select>
+					  </div>
+					  <div class="form-group">
+					    <label for="readInterval">Suggested audit date：</label>
+	                    <input type="text" class="form-control" id="readInterval" name="readInterval" maxlength="10" value="2017/5/23" >
+					  </div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-white" data-dismiss="modal" id="closeAccessInfoForm">Close</button>
+					<button type="submit" class="btn btn-primary" id="confirmAccessInfoForm">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
-
+<script src="${ctx  }/js/jquery.min.js?v=2.1.4"></script>
+	<script src="${ctx  }/js/jquery-migrate-1.1.0.min.js"></script>
+	<script src="${ctx  }/js/bootstrap.min.js?v=3.3.5"></script>
+	<script src="${ctx  }/js/content.min.js?v=1.0.0"></script>
+	<script src="${ctx  }/js/plugins/iCheck/icheck.min.js"></script>
+	<script src="${ctx  }/js/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	<script src="${ctx  }/js/plugins/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script src="${ctx  }/js/plugins/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+	<script src="${ctx  }/js/plugins/sweetalert/sweetalert.min.js"></script>
+	<script src="${ctx  }/js/system/base.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$("#createAuditTask").click(function(){
+		$("#companyEditModal").modal("show");
+	});
+	
+});
+</script>
 </html>

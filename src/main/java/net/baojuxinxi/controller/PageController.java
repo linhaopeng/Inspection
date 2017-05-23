@@ -184,4 +184,9 @@ public class PageController {
 	public String export_factory_list(HttpServletRequest request, HttpServletResponse response,HttpSession session){
 		return "export-factory-list";
 	}
+	//项目信息查询
+	@RequestMapping(value = "/export_factory_map")
+	public String export_factory_map(HttpServletRequest request, HttpServletResponse response,HttpSession session){
+		return "export-factory-map";
+	}
 }

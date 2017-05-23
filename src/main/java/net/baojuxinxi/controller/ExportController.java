@@ -71,8 +71,10 @@ public class ExportController {
 		System.out.println("fileName：" + file.getOriginalFilename());
 
 		String fileName = file.getOriginalFilename();
+		fileName = fileName.toLowerCase();
 		String img = generateRandomFilename()
 				+ fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length());
+		img = img.toLowerCase();
 		try {
 			
 			// 拿到输出流，同时重命名上传的文件

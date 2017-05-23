@@ -86,14 +86,15 @@ $("#head_img").change(function(){
 });
 
 $(function(){
-	var t=/project_info_management/;
+	/*var t=/export_factory_list/;
 	var u=$(".J_menuItem");
 	u.each(function(){
 		var h=$(this).attr("href");
 		if(t.test(h)){
 			$(this).click();
 		}
-	});
+	});*/
+	//$(".J_menuItem[data-index='1']").click();
 });
 
 

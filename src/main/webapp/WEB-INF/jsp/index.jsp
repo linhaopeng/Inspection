@@ -235,8 +235,8 @@
     <script src="${ctx  }/js/hplus.min.js?v=4.0.0"></script>
     <script type="text/javascript">
     	$(function(){
-    		var obj = $(".nav-second-level").find("a[data-index='2']");
-    		obj.click();
+    		var obj = $(".nav-second-level").find("a[data-index='1']");
+    		obj.click(); 
     	});
     </script>
 </body>
