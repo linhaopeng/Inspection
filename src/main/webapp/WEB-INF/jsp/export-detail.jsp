@@ -129,7 +129,7 @@ body {
 		<div class="row-fluid">
 
 			<div class="col-sm-9"
-				style="width: 100%; margin-bottom: 20px; margin-left: 20px; font-size: 14px; position: relative">
+				style="width: 100%; margin-bottom: 20px; font-size: 14px; position: relative">
 
 				<div class="container-head clearfix"
 					style="margin-left: inherit; width: 98%">
@@ -147,7 +147,7 @@ body {
 					</div>
 				</div>
 				<div class="tabbable" id="tabs-285036"
-					style="margin-top: 30px; margin-bottom: 30px;">
+					style="margin-bottom: 30px;">
 					<ul class="nav nav-tabs">
 						<li class="active" id="getProject_project"><a
 							href="#panel-913368" data-toggle="tab">GENERAL - EXECUTIVE
@@ -606,33 +606,33 @@ body {
 
                             <div class="my_h" style="width: 80%; clear: both;">
                             	<div class="row">
-									<div class="col-md-2">
+									<div class="col-md-3">
 										<div class="thumbnail">
-											<img src="${ctx }/img/export/side1.png">
+											<img src="${ctx }/img/export/side1.png" style="height:220px;width:100%;">
 											<div class="caption">
 												<h3 style="text-align: center;">stitching wrong</h3>
 											</div>
 										</div>
 									</div>
-									<div class="col-md-2">
+									<div class="col-md-3">
 										<div class="thumbnail">
-											<img src="${ctx }/img/export/side2.png">
+											<img src="${ctx }/img/export/side2.png" style="height:220px;width:100%;">
 											<div class="caption">
 												<h3 style="text-align: center;">blot</h3>
 											</div>
 										</div>
 									</div>
-									<div class="col-md-2">
+									<div class="col-md-3">
 										<div class="thumbnail">
-											<img src="${ctx }/img/export/side3.png">
+											<img src="${ctx }/img/export/side3.png" style="height:220px;width:100%;">
 											<div class="caption">
 												<h3 style="text-align: center;">sticker size</h3>
 											</div>
 										</div>
 									</div>
-									<div class="col-md-2">
+									<div class="col-md-3">
 										<div class="thumbnail">
-											<img src="${ctx }/img/export/side4.png">
+											<img src="${ctx }/img/export/side4.png" style="height:220px;width:100%;">
 											<div class="caption">
 												<h3 style="text-align: center;">Weighting</h3>
 											</div>
@@ -734,25 +734,25 @@ body {
 
                             <div class="my_h" style="width: 80%; clear: both;">
                             	<div class="row">
-									<div class="col-md-2">
+									<div class="col-md-3">
 										<div class="thumbnail">
-											<img src="${ctx }/img/export/side1.png">
+											<img src="${ctx }/img/export/side1.png" style="height:220px;width:100%;">
 											<div class="caption">
 												<h3 style="text-align: center;">Carton shipping Mark</h3>
 											</div>
 										</div>
 									</div>
-									<div class="col-md-2">
+									<div class="col-md-3">
 										<div class="thumbnail">
-											<img src="${ctx }/img/export/side2.png">
+											<img src="${ctx }/img/export/side2.png" style="height:220px;width:100%;">
 											<div class="caption">
 												<h3 style="text-align: center;">Master Carton Mark</h3>
 											</div>
 										</div>
 									</div>
-									<div class="col-md-2">
+									<div class="col-md-3">
 										<div class="thumbnail">
-											<img src="${ctx }/img/export/side3.png">
+											<img src="${ctx }/img/export/side3.png" style="height:220px;width:100%;">
 											<div class="caption">
 												<h3 style="text-align: center;">garment humidity</h3>
 											</div>
@@ -857,21 +857,21 @@ body {
 				    	html+="<div class=\"row\">";
 						
 				    	for(var i=0;i<data.length;i++){
-				    		if(i%6 == 0){
+				    		if(i%4 == 0){
 				    			html+="</div>";
 				    			html+="<div class=\"row\">";
-				    			html+="<div class=\"col-md-2\">";
+				    			html+="<div class=\"col-md-3\">";
 								html+="	<div class=\"thumbnail\">";
-								html+="		<img style=\"height:180px;width:100%;\" src=\"${ctx }/upload/"+data[i].img+"\">";
+								html+="		<img style=\"height:220px;width:100%;\" src=\"${ctx }/upload/"+data[i].img+"\">";
 								html+="		<div class=\"caption\">";
 								html+="			<h3 style=\"text-align: center;\">"+data[i].description+"</h3>";
 								html+="		</div>";
 								html+="	</div>";
 								html+="</div>";
 				    		}else{
-				    			html+="<div class=\"col-md-2\">";
+				    			html+="<div class=\"col-md-3\">";
 								html+="<div class=\"thumbnail\">";
-								html+="		<img style=\"height:180px;width:100%;\" src=\"${ctx }/upload/"+data[i].img+"\">";
+								html+="		<img style=\"height:220px;width:100%;\" src=\"${ctx }/upload/"+data[i].img+"\">";
 								html+="		<div class=\"caption\">";
 								html+="			<h3 style=\"text-align: center;\">"+data[i].description+"</h3>";
 								html+="		</div>";

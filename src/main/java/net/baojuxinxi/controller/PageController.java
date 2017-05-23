@@ -174,4 +174,14 @@ public class PageController {
 	public String toProject_info_show(HttpServletRequest request, HttpServletResponse response,HttpSession session){
 		return "project_info_show";
 	}
+	//项目信息查询
+	@RequestMapping(value = "/export_factory_detail")
+	public String export_factory_detail(HttpServletRequest request, HttpServletResponse response,HttpSession session){
+		return "export-factory-detail";
+	}
+	//项目信息查询
+	@RequestMapping(value = "/export_factory_list")
+	public String export_factory_list(HttpServletRequest request, HttpServletResponse response,HttpSession session){
+		return "export-factory-list";
+	}
 }

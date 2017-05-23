@@ -10,9 +10,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>广州市番禺区现代产业基地项目管理系统 - 项目信息查询</title>
+<title>Inspection - Factory Audit Application Form</title>
 <meta name="keywords" content="门禁,考勤,安防">
-<meta name="description" content="广州市番禺区现代产业基地项目管理系统 - 项目信息查询">
+<meta name="description" content="Inspection - Factory Audit Application Form">
 
 <link rel="shortcut icon" href="favicon.ico">
 <link href="${ctx  }/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -69,7 +69,7 @@ ul.ztree {
 					<div class="row clearfix">
 						<div class="col-md-12 column">
 							<div class="page-header">
-								<h1 style="font-weight: 700; font-size: 22px;">Order List</h1>
+								<h1 style="font-weight: 700; font-size: 22px;">Factory List</h1>
 							</div>
 						</div>
 					</div>
@@ -79,16 +79,9 @@ ul.ztree {
 					<form class="fadeInDown">
 						<div class="form-inline f_s">
 							<div class="f_a" id="getQuery">
-								<button type="button" class="btn btn-primary">Pre-production Meeting</button>
-							</div>
-							<div class="f_a" id="getQuery">
-								<button type="button" class="btn btn-primary">Create In-Line Inspetion</button>
-							</div>
-							<div class="f_a" id="getQuery">
-								<button type="button" class="btn btn-primary">Create Final Inspetion</button>
+								<button type="button" class="btn btn-primary">Create Factory </button>
 							</div>
 						</div>
-
 					</form>
 					<div class="ibox-content table-responsive">
 
@@ -96,122 +89,95 @@ ul.ztree {
 							<thead>
 								<tr>
 									<th><input type="checkbox"></th>
-									<th>Order No</th>
-									<th>Supplier/Vendor</th>
-									<th>Order Qty</th>
-									<th>Order Date</th>
-									<th>
-										<table>
-											<tr>
-												<td>In-Line Inspetion</td>
-											</tr>
-											<tr>
-												<td>Date(Plan)</td>
-											</tr>
-										</table>
-									</th>
-									<th>
-										<table>
-											<tr>
-												<td>Final Inspetion </td>
-											</tr>
-											<tr>
-												<td>Date(Plan)</td>
-											</tr>
-										</table>
-									</th>
+									<th>Supplier number</th>
+									<th>Factory name（Chinese）</th>
+									<th>Factory name（English）</th>
+									<th>Contact person(Supplier)</th>
+									<th>Phone(Supplier)</th>
+									<th>Suggested audit date</th>
+									<th>Report</th>
 								</tr>
 							</thead>
 							<tbody id="tableBody">
 								<tr>
 									<td><input type="checkbox"></td>
-									<td>10027022</td>
-									<td>GUANGDONG TEXTILES</td>
-									<td>10000</td>
-									<td>20.05.2016</td>
-									<td>20.11.2016</td>
-									<td>20.02.2017</td>
+									<td>13465</td>
+									<td>广东省纺织品进出口股份有限公司</td>
+									<td>Guangdong Textiles Imp.&Exp.CO.LTD.</td>
+									<td>huangjn</td>
+									<td>020-83558988</td>
+									<td>20.09.2017</td>
+									<td><a href="${ctx }/export_factory_detail?id=1">In-line Factory Report</a></td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
-									<td>10027023</td>
-									<td>Wisdom Fashion International</td>
-									<td>20000</td>
-									<td>20.05.2016</td>
-									<td>20.11.2016</td>
-									<td>20.02.2017</td>
+									<td>13458</td>
+									<td>广东省家具股份有限公司</td>
+									<td>Guangdong Textiles Imp.&Exp.CO.LTD.</td>
+									<td>wangxu</td>
+									<td>020-83558977</td>
+									<td>20.08.2017</td>
+									<td><a href="${ctx }/export_factory_detail?id=1">In-line Factory Report</a></td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
-									<td>10027024</td>
-									<td>Zhuyan Fashion International</td>
-									<td>9000</td>
-									<td>20.05.2016</td>
-									<td>20.11.2016</td>
-									<td>20.02.2017</td>
+									<td>13459</td>
+									<td>广东省羊毛进出口股份有限公司</td>
+									<td>Guangdong Wool CO.LTD.</td>
+									<td>lixy</td>
+									<td>020-83558966</td>
+									<td>20.07.2017</td>
+									<td><a href="${ctx }/export_factory_detail?id=1">Final Factory Report</a></td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
-									<td>10027025</td>
-									<td>Guangzhou Baoju Fashion</td>
-									<td>10000</td>
-									<td>20.05.2016</td>
-									<td>20.11.2016</td>
-									<td>20.02.2017</td>
+									<td>13560</td>
+									<td>广东省手机配件股份有限公司</td>
+									<td>Guangdong Phone accessories CO.LTD.</td>
+									<td>wengxt</td>
+									<td>020-83558955</td>
+									<td>20.06.2017</td>
+									<td><a href="${ctx }/export_factory_detail?id=1">Final Factory Report</a></td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
-									<td>10027026</td>
-									<td>Beautiful Fashion International</td>
-									<td>30000</td>
-									<td>20.05.2016</td>
-									<td>20.11.2016</td>
-									<td>20.02.2017</td>
+									<td>13461</td>
+									<td>广东省服饰用品股份有限公司</td>
+									<td>Guangdong Clothing CO.LTD.</td>
+									<td>linhp</td>
+									<td>020-83558944</td>
+									<td>20.05.2017</td>
+									<td><a href="${ctx }/export_factory_detail?id=1">Final Factory Report</a></td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
-									<td>10027027</td>
-									<td>GUANGDONG TEXTILES</td>
-									<td>40000</td>
-									<td>20.05.2016</td>
-									<td>20.11.2016</td>
-									<td>20.02.2017</td>
+									<td>13462</td>
+									<td>广东省印刷股份有限公司</td>
+									<td>Guangdong Printing Imp.&Exp.CO.LTD.</td>
+									<td>chenxt</td>
+									<td>020-83558933</td>
+									<td>20.04.2017</td>
+									<td><a href="${ctx }/export_factory_detail?id=1">In-line Factory Report</a></td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
-									<td>10027028</td>
-									<td>GUANGDONG TEXTILES</td>
-									<td>10020</td>
-									<td>20.05.2016</td>
-									<td>20.11.2016</td>
-									<td>20.02.2017</td>
+									<td>13463</td>
+									<td>广东省毛织品进出口股份有限公司</td>
+									<td>Guangdong Wool CO.LTD.</td>
+									<td>chenlf</td>
+									<td>020-83558922</td>
+									<td>20.03.2017</td>
+									<td><a href="${ctx }/export_factory_detail?id=1">In-line Factory Report</a></td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
-									<td>10027029</td>
-									<td>GUANGDONG TEXTILES</td>
-									<td>13000</td>
-									<td>20.05.2016</td>
-									<td>20.11.2016</td>
+									<td>13464</td>
+									<td>广东省雷达接收股份有限公司</td>
+									<td>Guangdong RadarReception Imp.&Exp.CO.LTD.</td>
+									<td>fangde</td>
+									<td>020-83558911</td>
 									<td>20.02.2017</td>
-								</tr>
-								<tr>
-									<td><input type="checkbox"></td>
-									<td>10027030</td>
-									<td>GUANGDONG TEXTILES</td>
-									<td>50000</td>
-									<td>20.05.2016</td>
-									<td>20.11.2016</td>
-									<td>20.02.2017</td>
-								</tr>
-								<tr>
-									<td><input type="checkbox"></td>
-									<td>10027031</td>
-									<td>GUANGDONG TEXTILES</td>
-									<td>10000</td>
-									<td>20.05.2016</td>
-									<td>20.11.2016</td>
-									<td>20.02.2017</td>
+									<td><a href="${ctx }/export_factory_detail?id=1">In-line Factory Report</a></td>
 								</tr>
 								
 							</tbody>

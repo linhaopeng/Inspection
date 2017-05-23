@@ -67,7 +67,7 @@ ul.ztree {
 		<div class="row">
 
 			<div class="col-sm-12"
-				style="width: 100%; margin-bottom: 20px; margin-left: 30px; font-size: 14px;">
+				style="width: 100%;font-size: 14px;">
 
 				<div class="container" style="margin-left: inherit;">
 					<div class="row clearfix">
@@ -204,7 +204,7 @@ ul.ztree {
 				</div>
 			</div>
 		</div>
-
+	</div>
 </body>
 
 </html>

@@ -215,10 +215,6 @@
                         	<iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="${ctx  }/device_management.do?v=4.0" frameborder="0" data-id="${ctx  }/device_management.do" seamless></iframe>
                         </c:if> --%>
             </div>
-            <div class="footer">
-                <!-- <div class="pull-right">&copy; 2014-2015 <a href="http://www.lentone.com.cn/" target="_blank">www.lentone.com.cn</a> -->
-                </div>
-            </div>
         </div>
         <!--右侧部分结束-->
     </div>

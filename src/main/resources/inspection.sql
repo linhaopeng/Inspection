@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2017-04-19 14:20:40
+Date: 2017-05-23 16:59:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -165,7 +165,7 @@ CREATE TABLE `demo_export` (
   `type` varchar(10) DEFAULT NULL,
   `createdate` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of demo_export
@@ -183,8 +183,23 @@ INSERT INTO `demo_export` VALUES ('10', 'side1.png', 'Front Side', '2', '2017-04
 INSERT INTO `demo_export` VALUES ('11', 'side2.png', 'Back Side', '2', '2017-04-19 11:29:33');
 INSERT INTO `demo_export` VALUES ('12', 'side3.png', 'Main Label', '2', '2017-04-19 11:29:35');
 INSERT INTO `demo_export` VALUES ('13', 'side5.png', 'Shank Button', '2', '2017-04-19 11:29:39');
-INSERT INTO `demo_export` VALUES ('16', '2017_4_19_989056050.png', 'eds', '1', '2017-04-19 11:46:36');
-INSERT INTO `demo_export` VALUES ('17', '2017_4_19_1654051317.png', 'eds', '2', '2017-04-19 11:46:43');
+INSERT INTO `demo_export` VALUES ('14', '1.jpg', 'Facility name', '3', '2017-04-19 11:29:08');
+INSERT INTO `demo_export` VALUES ('15', '2.jpg', 'Facility entrance', '3', '2017-04-19 11:29:13');
+INSERT INTO `demo_export` VALUES ('16', '3.jpg', 'Production building', '3', '2017-04-19 11:29:15');
+INSERT INTO `demo_export` VALUES ('17', '4.jpg', 'Domitory building', '3', '2017-04-19 11:29:18');
+INSERT INTO `demo_export` VALUES ('18', '5.png', 'Rewiding workshop', '3', '2017-04-19 11:29:20');
+INSERT INTO `demo_export` VALUES ('19', '6.jpg', 'Knitting workshop', '3', '2017-04-19 11:29:22');
+INSERT INTO `demo_export` VALUES ('20', '7.png', 'Pressing workshop', '3', '2017-04-19 11:29:20');
+INSERT INTO `demo_export` VALUES ('21', '8.png', 'Packing workshop', '3', '2017-04-19 11:29:20');
+INSERT INTO `demo_export` VALUES ('22', '9.png', 'Material warehouse', '3', '2017-04-19 11:29:20');
+INSERT INTO `demo_export` VALUES ('23', '10.png', 'Finished goods warehouse', '3', '2017-04-19 11:29:20');
+INSERT INTO `demo_export` VALUES ('24', 'n-1.jpg', 'One ladder (1.2 meters height) without handrail was used for adding fuel in the boiler room.', '4', '2017-04-19 11:29:20');
+INSERT INTO `demo_export` VALUES ('25', 'n-2.png', 'Fire exitinguishers', '4', '2017-04-19 11:29:20');
+INSERT INTO `demo_export` VALUES ('26', 'c-1.png', '', '5', '2017-04-19 11:29:20');
+INSERT INTO `demo_export` VALUES ('27', 'c-2.png', '', '5', '2017-04-19 11:29:20');
+INSERT INTO `demo_export` VALUES ('28', 'c-3.png', '', '5', '2017-04-19 11:29:20');
+INSERT INTO `demo_export` VALUES ('29', 'c-4.png', '', '5', '2017-04-19 11:29:20');
+INSERT INTO `demo_export` VALUES ('30', 'c-5.png', '', '5', '2017-04-19 11:29:20');
 
 -- ----------------------------
 -- Table structure for depamanage
@@ -292,7 +307,7 @@ CREATE TABLE `permission` (
   `created_time` timestamp NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   `latest_update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`permission_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of permission
@@ -306,8 +321,10 @@ INSERT INTO `permission` VALUES ('6', '项目类型', '3', '4', 'projectTypeMana
 INSERT INTO `permission` VALUES ('7', '项目单位管理', '3', '1', 'projectUnitManagement', '2', '/project_unit_management', '项目单位管理', '2016-08-18 09:19:29', '2016-07-15 09:50:12');
 INSERT INTO `permission` VALUES ('8', '项目信息查询', '3', '4', 'projectInfoShow', '2', '/project_info_show', '项目信息查询', '2016-08-18 09:19:40', '2016-07-15 09:50:12');
 INSERT INTO `permission` VALUES ('9', 'Inspection', '1', '0', 'OrderManagement', '1', '/loginout', 'Inspetion', '2017-04-17 01:34:33', '2016-07-15 09:50:12');
-INSERT INTO `permission` VALUES ('10', 'Order List', '3', '9', 'ReportManagement', '1', '/export', 'Order List', '2017-04-16 23:13:10', '2016-07-15 09:50:12');
-INSERT INTO `permission` VALUES ('11', 'Task Management', '3', '9', 'ReportManagement', '1', '/task', 'Task Management', '2017-04-16 23:13:14', '2016-07-15 09:50:12');
+INSERT INTO `permission` VALUES ('10', 'Order List', '3', '9', 'ReportManagement', '2', '/export', 'Order List', '2017-05-23 15:11:17', '2016-07-15 09:50:12');
+INSERT INTO `permission` VALUES ('11', 'Task Management', '3', '9', 'ReportManagement', '2', '/task', 'Task Management', '2017-05-23 15:11:21', '2016-07-15 09:50:12');
+INSERT INTO `permission` VALUES ('12', 'Factory Audit', '1', '0', 'OrderManagement', '1', '/loginout', 'Factory Audit', '2017-04-17 01:34:33', '2016-07-15 09:50:12');
+INSERT INTO `permission` VALUES ('13', 'Factory List', '3', '12', 'ReportManagement', '2', '/export_factory_list', 'Order List', '2017-05-23 15:11:43', '2016-07-15 09:50:12');
 
 -- ----------------------------
 -- Table structure for problem
@@ -713,6 +730,8 @@ INSERT INTO `role_permissions` VALUES ('15', '3', '8');
 INSERT INTO `role_permissions` VALUES ('16', '1', '9');
 INSERT INTO `role_permissions` VALUES ('17', '1', '10');
 INSERT INTO `role_permissions` VALUES ('18', '1', '11');
+INSERT INTO `role_permissions` VALUES ('19', '1', '12');
+INSERT INTO `role_permissions` VALUES ('20', '1', '13');
 
 -- ----------------------------
 -- Table structure for station
