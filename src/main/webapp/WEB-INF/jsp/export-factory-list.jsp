@@ -117,7 +117,7 @@ ul.ztree {
 									<td>wangxu</td>
 									<td>Doing</td>
 									<td>20.08.2017</td>
-									<td>In-line Factory Report</td>
+									<td>&nbsp;</td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
@@ -127,7 +127,7 @@ ul.ztree {
 									<td>lixy</td>
 									<td>Doing</td>
 									<td>20.07.2017</td>
-									<td>In-line Factory Report</a></td>
+									<td>&nbsp;</a></td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
@@ -137,7 +137,7 @@ ul.ztree {
 									<td>wengxt</td>
 									<td>To be started</td>
 									<td>20.06.2017</td>
-									<td>In-line Factory Report</td>
+									<td>&nbsp;</td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
@@ -157,7 +157,7 @@ ul.ztree {
 									<td>chenxt</td>
 									<td>To be started</td>
 									<td>20.04.2017</td>
-									<td>In-line Factory Report</td>
+									<td>&nbsp;</td>
 								</tr>
 								<tr>
 									<td><input type="checkbox"></td>
@@ -177,7 +177,7 @@ ul.ztree {
 									<td>fangde</td>
 									<td>To be started</td>
 									<td>20.02.2017</td>
-									<td>In-line Factory Report</td>
+									<td>&nbsp;</td>
 								</tr>
 								
 							</tbody>

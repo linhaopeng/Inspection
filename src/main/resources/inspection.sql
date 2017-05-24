@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : local_mysql
 Source Server Version : 50532
 Source Host           : localhost:3306
-Source Database       : db_sys_itsm
+Source Database       : inspection
 
 Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2017-05-23 16:59:25
+Date: 2017-05-24 13:53:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -165,7 +165,7 @@ CREATE TABLE `demo_export` (
   `type` varchar(10) DEFAULT NULL,
   `createdate` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of demo_export
@@ -307,7 +307,7 @@ CREATE TABLE `permission` (
   `created_time` timestamp NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   `latest_update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`permission_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of permission
@@ -323,8 +323,11 @@ INSERT INTO `permission` VALUES ('8', '项目信息查询', '3', '4', 'projectIn
 INSERT INTO `permission` VALUES ('9', 'Inspection', '1', '0', 'OrderManagement', '1', '/loginout', 'Inspetion', '2017-04-17 01:34:33', '2016-07-15 09:50:12');
 INSERT INTO `permission` VALUES ('10', 'Order List', '3', '9', 'ReportManagement', '2', '/export', 'Order List', '2017-05-23 15:11:17', '2016-07-15 09:50:12');
 INSERT INTO `permission` VALUES ('11', 'Task Management', '3', '9', 'ReportManagement', '2', '/task', 'Task Management', '2017-05-23 15:11:21', '2016-07-15 09:50:12');
-INSERT INTO `permission` VALUES ('12', 'Factory Audit', '1', '0', 'OrderManagement', '1', '/loginout', 'Factory Audit', '2017-04-17 01:34:33', '2016-07-15 09:50:12');
-INSERT INTO `permission` VALUES ('13', 'Factory List', '3', '12', 'ReportManagement', '2', '/export_factory_list', 'Order List', '2017-05-23 15:11:43', '2016-07-15 09:50:12');
+INSERT INTO `permission` VALUES ('12', 'Factory Audit', '1', '0', 'OrderManagement', '1', '/loginout', 'Factory Audit', '2017-04-17 01:34:38', '2016-07-15 09:50:12');
+INSERT INTO `permission` VALUES ('13', 'Factory List', '3', '12', 'ReportManagement', '2', '/export_factory_list', 'Order List', '2017-05-23 15:11:45', '2016-07-15 09:50:12');
+INSERT INTO `permission` VALUES ('14', 'Monitor', '1', '0', 'ReportMapManagement', '1', '/loginout', 'Order Map', '2017-04-17 00:45:59', '2016-07-15 09:50:12');
+INSERT INTO `permission` VALUES ('15', 'Location Monitor', '3', '14', 'ReportMapManagement', '2', '/export_factory_map', 'Monitor', '2017-05-24 13:50:19', '2016-07-15 09:50:12');
+INSERT INTO `permission` VALUES ('16', 'Location Track', '3', '14', 'ReportMapManagement', '2', '/export_factory_map2', 'Monitor', '2017-05-24 13:49:44', '2016-07-15 09:50:12');
 
 -- ----------------------------
 -- Table structure for problem
@@ -732,6 +735,9 @@ INSERT INTO `role_permissions` VALUES ('17', '1', '10');
 INSERT INTO `role_permissions` VALUES ('18', '1', '11');
 INSERT INTO `role_permissions` VALUES ('19', '1', '12');
 INSERT INTO `role_permissions` VALUES ('20', '1', '13');
+INSERT INTO `role_permissions` VALUES ('21', '1', '14');
+INSERT INTO `role_permissions` VALUES ('22', '1', '15');
+INSERT INTO `role_permissions` VALUES ('23', '1', '16');
 
 -- ----------------------------
 -- Table structure for station
