@@ -161,7 +161,7 @@ body {
 						<li id="getPro_problem"><a href="#panel-419306"
 							data-toggle="tab">FABRIC, TRIM, ACCESSORYS, TAGS</a></li>
 						<li id="getPro_problem"><a href="#panel-419307"
-							data-toggle="tab">PACKING(incl.photo decumentation)</a></li>
+							data-toggle="tab">PACKING (incl.photo documentation)</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -214,7 +214,7 @@ body {
 											Order QTY: <small id="date_a">8285PCS</small>
 										</h4>
 										<h4>
-											Sorted out QTY: <small>-873pcs(-10.5%)</small>
+											Sorted out QTY: <small>-873pcs (-10.5%)</small>
 										</h4>
 										<h4>
 											Sorted out Lot No:
@@ -392,33 +392,33 @@ body {
                                 <thead>
                                     <tr class="active">
                                         <td colspan="3" rowspan="2">Inspection Standard:BS 6001/Din40080/Iso 2895</td>
-                                        <td colspan="3" >defects</td>
+                                        <td colspan="3" >Defects</td>
                                     </tr>
                                     <tr>
-										<td>critical</td>
-                                        <td>major</td>
-                                        <td>minor</td>
+										<td>Critical</td>
+                                        <td>Major</td>
+                                        <td>Minor</td>
 									</tr>
                                 </thead>
                                 <tbody id="tbode_schedule">
 	                                <tr>
-										<td>sampling plan</td>
-										<td>general</td>
+										<td>Sampling plan</td>
+										<td>General</td>
 										<td>AQL</td>
 										<td>0</td>
 										<td>2.5</td>
 										<td>4.0</td>
 	                                </tr>
 	                                <tr>
-										<td>sampling size</td>
+										<td>Sampling size</td>
 										<td>200</td>
-										<td>pcs</td>
+										<td>PCS</td>
 										<td>0</td>
 										<td>2.5</td>
 										<td>4.0</td>
 	                                </tr>
 	                                <tr>
-										<td>inspection level</td>
+										<td>Inspection level</td>
 										<td>II</td>
 										<td>MAX allowed</td>
 										<td>0</td>
@@ -431,45 +431,45 @@ body {
                             <table class="table table-bordered" style="margin-left: 20px; height: 70px;">
                                 <thead>
                                     <tr class="active">
-                                        <td>color</td>
-                                        <td>defect description- workmanship</td>
-                                        <td>decision of RQC for improvement</td>
-                                        <td>major</td>
-                                        <td>minor</td>
+                                        <td>Color</td>
+                                        <td>Defect description- workmanship</td>
+                                        <td>Decision of RQC for improvement</td>
+                                        <td>Major</td>
+                                        <td>Minor</td>
                                     </tr>
                                 </thead>
                                 <tbody id="tbode_schedule">
 	                                <tr>
-										<td>light rose</td>
-										<td>blot</td>
+										<td>Light rose</td>
+										<td>Blot</td>
 										<td></td>
 										<td>1</td>
 										<td>2</td>
 	                                </tr>
 	                                <tr>
 										<td></td>
-										<td>broken stiching</td>
+										<td>Broken stiching</td>
 										<td></td>
 										<td>1</td>
 										<td>2</td>
 	                                </tr>
 	                                <tr>
 										<td></td>
-										<td>waisband is unsymmertic for left and right</td>
+										<td>Waisband is unsymmertic for left and right</td>
 										<td></td>
 										<td>1</td>
 										<td>2</td>
 	                                </tr>
 	                                <tr>
 										<td></td>
-										<td>care label is stiching wrong</td>
+										<td>Care label is stiching wrong</td>
 										<td></td>
 										<td>1</td>
 										<td>2</td>
 	                                </tr>
 	                                <tr>
 										<td></td>
-										<td>the seam allowance of back pocket is visible</td>
+										<td>The seam allowance of back pocket is visible</td>
 										<td></td>
 										<td>1</td>
 										<td>2</td>
@@ -544,7 +544,7 @@ body {
 									</div>
 								</div> --%>
 								<p>Remarks</p>
-								<p><textarea rows="10" cols="80"></textarea></p>
+								<p><textarea rows="5" cols="120"></textarea></p>
 							</div>
                         </div>
                         <div class="tab-pane" id="panel-419305">
@@ -558,34 +558,34 @@ body {
                             <table class="table table-bordered" style="margin-left: 20px; height: 70px;">
                                 <thead>
                                     <tr class="active">
-                                        <td>defect description-MEASUREMENTS</td>
-                                        <td>decision of RQC for improvement</td>
-                                        <td>colour/part</td>
-                                        <td>colour/part</td>
+                                        <td>Defect description-MEASUREMENTS</td>
+                                        <td>Decision of RQC for improvement</td>
+                                        <td>Colour/part</td>
+                                        <td>Colour/part</td>
                                     </tr>
                                 </thead>
                                 <tbody id="tbode_schedule">
 	                                <tr>
-										<td>the measurement of hip need improve</td>
-										<td>rturn the jeans for repair</td>
+										<td>The measurement of hip need improve</td>
+										<td>Rturn the jeans for repair</td>
+										<td></td>
+										<td></td>
+	                                </tr>
+	                                <tr>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+	                                </tr>
+	                                <tr>
+										<td></td>
+										<td>Total defects found</td>
 										<td></td>
 										<td></td>
 	                                </tr>
 	                                <tr>
 										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-	                                </tr>
-	                                <tr>
-										<td></td>
-										<td>total defects found</td>
-										<td></td>
-										<td></td>
-	                                </tr>
-	                                <tr>
-										<td></td>
-										<td>total dcefects allowed</td>
+										<td>Total defects allowed</td>
 										<td></td>
 										<td></td>
 	                                </tr>
@@ -593,7 +593,7 @@ body {
                             </table>
                             <div style="width: 80%; clear: both;" class="my_h">
 								<h4>
-									MEASUREMENTS: <input type="checkbox" name="tolerance">within tolerance<input type="checkbox" name="tolerance">out of tolerance
+									MEASUREMENTS: <input type="checkbox" name="tolerance"> Within tolerance &nbsp;&nbsp;<input type="checkbox" name="tolerance"> Out of tolerance
 								</h4>
 							</div>
 							<table class="table t_titil" style="">
@@ -610,7 +610,7 @@ body {
 										<div class="thumbnail">
 											<img src="${ctx }/img/export/side1.png" style="height:220px;width:100%;">
 											<div class="caption">
-												<h3 style="text-align: center;">stitching wrong</h3>
+												<h3 style="text-align: center;">Stitching wrong</h3>
 											</div>
 										</div>
 									</div>
@@ -618,7 +618,7 @@ body {
 										<div class="thumbnail">
 											<img src="${ctx }/img/export/side2.png" style="height:220px;width:100%;">
 											<div class="caption">
-												<h3 style="text-align: center;">blot</h3>
+												<h3 style="text-align: center;">Blot</h3>
 											</div>
 										</div>
 									</div>
@@ -626,7 +626,7 @@ body {
 										<div class="thumbnail">
 											<img src="${ctx }/img/export/side3.png" style="height:220px;width:100%;">
 											<div class="caption">
-												<h3 style="text-align: center;">sticker size</h3>
+												<h3 style="text-align: center;">Sticker size</h3>
 											</div>
 										</div>
 									</div>
@@ -640,7 +640,7 @@ body {
 									</div>
 								</div>
 								<p>Remarks</p>
-								<p><textarea rows="10" cols="80"></textarea></p>
+								<p><textarea rows="5" cols="120"></textarea></p>
 							</div>
                         </div>
                         <div class="tab-pane" id="panel-419306">
@@ -670,10 +670,10 @@ body {
 										<td>Fabric colours：</td>
 										<td>√</td>
 										<td></td>
-										<td>main/size label</td>
+										<td>Main/size label</td>
 										<td></td>
 										<td></td>
-										<td>button/zipper</td>
+										<td>Button/zipper</td>
 										<td>√</td>
 										<td></td>
 	                                </tr>
@@ -681,10 +681,10 @@ body {
 										<td>Fabric hand feel/tension</td>
 										<td>√</td>
 										<td></td>
-										<td>care/content label</td>
+										<td>Care/content label</td>
 										<td></td>
 										<td></td>
-										<td>snap/rivet</td>
+										<td>Snap/rivet</td>
 										<td>√</td>
 										<td></td>
 	                                </tr>
@@ -714,7 +714,7 @@ body {
 										<td>Elastic colours </td>
 										<td>√</td>
 										<td></td>
-										<td>thread colours</td>
+										<td>Thread colours</td>
 										<td></td>
 										<td></td>
 										<td>In-House Test</td>
@@ -754,20 +754,20 @@ body {
 										<div class="thumbnail">
 											<img src="${ctx }/img/export/side3.png" style="height:220px;width:100%;">
 											<div class="caption">
-												<h3 style="text-align: center;">garment humidity</h3>
+												<h3 style="text-align: center;">Garment humidity</h3>
 											</div>
 										</div>
 									</div>
 								</div>
 								<p>Remarks</p>
-								<p><textarea rows="10" cols="80"></textarea></p>
+								<p><textarea rows="5" cols="120"></textarea></p>
 							</div>
                         </div>
                         <div class="tab-pane" id="panel-419307">
                             <table class="table t_titil" style="">
                                 <tbody>
                                     <tr class="success">
-                                        <td style="width: 90%;">PACKING(incl.photo decumentation)</td>
+                                        <td style="width: 90%;">PACKING (Incl.photo documentation)</td>
                                 </tbody>
                             </table>
                             <!-- 项目问题内容 -->
@@ -791,12 +791,12 @@ body {
 										<td>58*39*20</td>
 	                                </tr>
 	                                <tr>
-										<td>carton weight(Gross/Net)</td>
+										<td>Carton weight (Gross/Net)</td>
 										<td>13kg/12kg</td>
 										<td>13kg/12kg</td>
 	                                </tr>
 	                                <tr>
-										<td>shopping mark </td>
+										<td>Shopping mark </td>
 										<td>√</td>
 										<td></td>
 	                                </tr>
@@ -804,7 +804,7 @@ body {
                             </table>
                             <div class="my_h" style="width: 80%; clear: both;">
 								<p>Remarks</p>
-								<p><textarea rows="10" cols="80"></textarea></p>
+								<p><textarea rows="5" cols="120"></textarea></p>
 							</div>
                         </div>
 					</div>

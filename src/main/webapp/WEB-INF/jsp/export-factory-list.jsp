@@ -89,12 +89,12 @@ ul.ztree {
 							<thead>
 								<tr>
 									<th><input type="checkbox"></th>
-									<th>Supplier number</th>
-									<th>Factory name（Chinese）</th>
-									<th>Factory name（English）</th>
-									<th>Contact person(Supplier)</th>
+									<th>Supplier Number</th>
+									<th>Factory Name (Chinese)</th>
+									<th>Factory Name (English)</th>
+									<th>Contact Person (Supplier)</th>
 									<th>Status</th>
-									<th>Suggested audit date</th>
+									<th>Suggested Audit Date</th>
 									<th>Audit Report</th>
 								</tr>
 							</thead>

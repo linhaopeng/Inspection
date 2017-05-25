@@ -106,7 +106,7 @@ ul.ztree {
 												<td>In-Line Inspection</td>
 											</tr>
 											<tr>
-												<td>Date(Plan)</td>
+												<td>Date (Plan)</td>
 											</tr>
 										</table>
 									</th>
@@ -116,7 +116,7 @@ ul.ztree {
 												<td>Final Inspection </td>
 											</tr>
 											<tr>
-												<td>Date(Plan)</td>
+												<td>Date (Plan)</td>
 											</tr>
 										</table>
 									</th>
