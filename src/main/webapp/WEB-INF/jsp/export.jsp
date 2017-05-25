@@ -82,10 +82,10 @@ ul.ztree {
 								<button type="button" class="btn btn-primary">Pre-production Meeting</button>
 							</div>
 							<div class="f_a" id="getQuery">
-								<button type="button" class="btn btn-primary">Create In-Line Inspetion</button>
+								<button type="button" class="btn btn-primary">Create In-Line Inspection</button>
 							</div>
 							<div class="f_a" id="getQuery">
-								<button type="button" class="btn btn-primary">Create Final Inspetion</button>
+								<button type="button" class="btn btn-primary">Create Final Inspection</button>
 							</div>
 						</div>
 
@@ -103,7 +103,7 @@ ul.ztree {
 									<th>
 										<table>
 											<tr>
-												<td>In-Line Inspetion</td>
+												<td>In-Line Inspection</td>
 											</tr>
 											<tr>
 												<td>Date(Plan)</td>
@@ -113,7 +113,7 @@ ul.ztree {
 									<th>
 										<table>
 											<tr>
-												<td>Final Inspetion </td>
+												<td>Final Inspection </td>
 											</tr>
 											<tr>
 												<td>Date(Plan)</td>

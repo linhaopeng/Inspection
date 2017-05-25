@@ -89,7 +89,7 @@ ul.ztree {
 									<th>Order No</th>
 									<th>Supplier/Vendor</th>
 									<th>Order Date</th>
-									<th>Inspetion Date</th>
+									<th>Inspection Date</th>
 									<th>Status</th>
 									<th>Report</th>
 								</tr>
